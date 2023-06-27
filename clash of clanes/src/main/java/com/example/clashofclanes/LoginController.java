@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import model.Player;
 
@@ -14,6 +15,9 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
     @FXML
     private AnchorPane login_pane;
+    @FXML
+    private ImageView backGround_img;
+
 
     @FXML
     private Label userName_lbl;

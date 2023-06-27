@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="510.0" prefWidth="905.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clashofclanes.LoginController">
    <children>
-      <ImageView fitHeight="518.0" fitWidth="905.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="backGround_img" fitHeight="518.0" fitWidth="905.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@1687789713771.png" />
          </image>
