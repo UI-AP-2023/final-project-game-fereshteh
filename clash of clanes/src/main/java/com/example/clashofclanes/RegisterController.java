@@ -6,7 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,6 +39,9 @@ public class RegisterController implements Initializable {
     private Button login_btn;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    }
+    @FXML
+    public void register(MouseEvent event) throws Exception {
+        new AllMap().start((Stage) register_btn.getScene().getWindow());
     }
 }

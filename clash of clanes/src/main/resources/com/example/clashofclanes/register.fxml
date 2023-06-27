@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.clashofclanes.RegisterController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="448.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clashofclanes.RegisterController">
+   <children>
+      <ImageView fx:id="backGround_img" fitHeight="459.0" fitWidth="823.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@1687789713771.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="login_pane" layoutX="564.0" layoutY="14.0" prefHeight="224.0" prefWidth="252.0" style="-fx-background-color: #3c658c;">
+         <children>
+            <Label fx:id="userName_lbl" layoutX="8.0" layoutY="47.0" prefHeight="21.0" prefWidth="77.0" text="UserName" />
+            <Label fx:id="Password_lbl" layoutX="15.0" layoutY="120.0" text="password" />
+            <TextField fx:id="userName_txtField" layoutX="87.0" layoutY="42.0" prefHeight="31.0" prefWidth="153.0" />
+            <TextField fx:id="password_txtField" layoutX="87.0" layoutY="115.0" prefHeight="31.0" prefWidth="153.0" />
+            <Button fx:id="register_btn" layoutX="29.0" layoutY="179.0" mnemonicParsing="false" onMouseClicked="#register" text="Register" />
+            <Button fx:id="login_btn" layoutX="164.0" layoutY="179.0" mnemonicParsing="false" text="login" />
+         </children>
+         <effect>
+            <Glow />
+         </effect>
+      </AnchorPane>
+   </children>
 </AnchorPane>

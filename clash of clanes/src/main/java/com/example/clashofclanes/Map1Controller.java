@@ -1,4 +1,4 @@
 package com.example.clashofclanes;
 
-public class MapController {
+public class Map1Controller {
 }
