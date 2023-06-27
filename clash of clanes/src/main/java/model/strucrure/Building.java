@@ -1,10 +1,14 @@
 package model.strucrure;
 
-public class Building {
+import javafx.scene.image.ImageView;
+
+public class Building extends ImageView {
     private String type;
     private double health;
     private double Attack_power;
     //----------------------------
+    ImageView imageView = new ImageView();
+    //------------------------------
 
     public String getType() {
         return type;
@@ -35,4 +39,20 @@ public class Building {
     }
     //----------------------------
 
+
+    public Building(String type, int health, int attack_power) {
+        this.type = type;
+        this.health = health;
+        Attack_power = attack_power;
+    }
+    //---------------------------------------
+
+
+    public ImageView getImageView() {
+        return imageView;
+    }
+
+    public void setImageView(ImageView imageView) {
+        this.imageView = imageView;
+    }
 }
