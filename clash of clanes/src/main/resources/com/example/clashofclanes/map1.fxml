@@ -16,7 +16,7 @@
             <Image url="@wall_8.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="blueBuliding_image" fitHeight="116.0" fitWidth="111.0" layoutX="327.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="blueBuliding_image" fitHeight="116.0" fitWidth="111.0" layoutX="328.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="320.0" AnchorPane.leftAnchor="328.0" AnchorPane.rightAnchor="749.1063842773438" AnchorPane.topAnchor="321.0">
          <image>
             <Image url="@giga_tesla_4.png" />
          </image>
