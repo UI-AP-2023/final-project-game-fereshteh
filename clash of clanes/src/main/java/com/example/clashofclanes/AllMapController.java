@@ -1,5 +1,6 @@
 package com.example.clashofclanes;
 
+import controller.LoginC;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -211,18 +212,25 @@ public class AllMapController implements Initializable {
     @FXML
     public void selectMap1(MouseEvent event){
         RegisterController.getInstance().setIndexMap(0);
+        LoginC.getInstance().insert(RegisterController.getInstance().getUsername(),RegisterController.getInstance().getPassword(),0,1);
     }
     @FXML
     public void selectMap2(MouseEvent event){
         RegisterController.getInstance().setIndexMap(1);
+        LoginC.getInstance().insert(RegisterController.getInstance().getUsername(),RegisterController.getInstance().getPassword(),1,2);
+
     }
     @FXML
     public void selectMap3(MouseEvent event){
         RegisterController.getInstance().setIndexMap(2);
+        LoginC.getInstance().insert(RegisterController.getInstance().getUsername(),RegisterController.getInstance().getPassword(),2,3);
+
     }
     @FXML
     public void selectMap4(MouseEvent event){
         RegisterController.getInstance().setIndexMap(3);
+        LoginC.getInstance().insert(RegisterController.getInstance().getUsername(),RegisterController.getInstance().getPassword(),3,4);
+
     }
     //---------------------------------------
 }

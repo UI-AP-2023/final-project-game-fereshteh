@@ -61,4 +61,20 @@ public class PlayersConnection {
             throw new RuntimeException(e);
         }
     }
+    //-----------------------------------------------------------------
+    public void savePlayer(String username,String password,int level,int map){
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db","server","1234");
+
+            String SQLCom  =String.format("INSERT INTO `players`(`username`, `password`,'level','success','failure','map') VALUES ('%s','%s','%d','%d','%d','%d')",username,password,level,0,0,map);
+            Statement s = connection.prepareStatement(SQLCom);
+            s.execute(SQLCom);
+            //------------------------
+            connection.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
