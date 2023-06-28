@@ -15,19 +15,7 @@ import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable {
     //--------------------------------
-    private static RegisterController instance;
-    private RegisterController() {
 
-    }
-
-    public static RegisterController getInstance() {
-        if (instance == null) {
-            instance = new RegisterController() {
-
-            };
-        }
-        return instance;
-    }
     //--------------------------------
     @FXML
     private ImageView backGround_img;
@@ -52,9 +40,9 @@ public class RegisterController implements Initializable {
 
     @FXML
     private Button login_btn;
-   private String username;
-  private   String password;
-  private int indexMap;
+   private static String username;
+  private  static String password;
+  private  static int indexMap;
   //----------------------------
 
     public ImageView getBackGround_img() {
@@ -65,28 +53,28 @@ public class RegisterController implements Initializable {
         this.backGround_img = backGround_img;
     }
 
-    public String getUsername() {
+    public static String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public static void setUsername(String username) {
+        RegisterController.username = username;
     }
 
-    public String getPassword() {
+    public  static String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public static void setPassword(String password) {
+        RegisterController.password = password;
     }
 
-    public int getIndexMap() {
+    public  static int getIndexMap() {
         return indexMap;
     }
 
-    public void setIndexMap(int indexMap) {
-        this.indexMap = indexMap;
+    public  static void setIndexMap(int indexMap) {
+        RegisterController.indexMap = indexMap;
     }
 
     //--------------------------

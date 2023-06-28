@@ -211,25 +211,25 @@ public class AllMapController implements Initializable {
     //--------------------------
     @FXML
     public void selectMap1(MouseEvent event){
-        RegisterController.getInstance().setIndexMap(0);
-        LoginC.getInstance().insert(RegisterController.getInstance().getUsername(),RegisterController.getInstance().getPassword(),0,1);
+        RegisterController.setIndexMap(0);
+        LoginC.getInstance().insert(RegisterController.getUsername(),RegisterController.getPassword(),0,1);
     }
     @FXML
     public void selectMap2(MouseEvent event){
-        RegisterController.getInstance().setIndexMap(1);
-        LoginC.getInstance().insert(RegisterController.getInstance().getUsername(),RegisterController.getInstance().getPassword(),1,2);
+        RegisterController.setIndexMap(1);
+        LoginC.getInstance().insert(RegisterController.getUsername(),RegisterController.getPassword(),1,2);
 
     }
     @FXML
     public void selectMap3(MouseEvent event){
-        RegisterController.getInstance().setIndexMap(2);
-        LoginC.getInstance().insert(RegisterController.getInstance().getUsername(),RegisterController.getInstance().getPassword(),2,3);
+        RegisterController.setIndexMap(2);
+        LoginC.getInstance().insert(RegisterController.getUsername(),RegisterController.getPassword(),2,3);
 
     }
     @FXML
     public void selectMap4(MouseEvent event){
-        RegisterController.getInstance().setIndexMap(3);
-        LoginC.getInstance().insert(RegisterController.getInstance().getUsername(),RegisterController.getInstance().getPassword(),3,4);
+        RegisterController.setIndexMap(3);
+        LoginC.getInstance().insert(RegisterController.getUsername(),RegisterController.getPassword(),3,4);
 
     }
     //---------------------------------------

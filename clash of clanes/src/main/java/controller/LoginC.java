@@ -31,6 +31,6 @@ public class LoginC {
    return false; }
     //------------------------------------------
     public void insert(String username,String password,int index,int level){
-    PlayersConnection.getInstance().savePlayer(username,password,level,index);
+    PlayersConnection.getInstance().savePlayer(username,password,index,level);
     }
 }
