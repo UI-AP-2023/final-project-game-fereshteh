@@ -6,6 +6,6 @@ module com.example.clashofclanes {
 
     opens com.example.clashofclanes to javafx.fxml;
     exports com.example.clashofclanes;
-    exports com.example.clashofclanes.controller;
-    opens com.example.clashofclanes.controller to javafx.fxml;
+    exports controller;
+    opens controller to javafx.fxml;
 }

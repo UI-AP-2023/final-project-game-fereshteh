@@ -1,12 +1,16 @@
 package com.example.clashofclanes;
 
+import controller.LoginC;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.Player;
 
 import java.net.URL;
@@ -42,6 +46,16 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    }
+    @FXML
+    public void login(MouseEvent event) throws Exception {
+       if( LoginC.getInstance().check(userName_txtField.getText(),password_txtField.getText())){
+           new AllMap().start((Stage) register_btn.getScene().getWindow());
+       }
+       else {
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+           alert.setContentText("wrong info");
+           alert.show();
+       }
     }
 }

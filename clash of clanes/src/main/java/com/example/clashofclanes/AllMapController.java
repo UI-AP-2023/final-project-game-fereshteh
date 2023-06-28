@@ -207,4 +207,22 @@ public class AllMapController implements Initializable {
 
         }
     }
+    //--------------------------
+    @FXML
+    public void selectMap1(MouseEvent event){
+        RegisterController.getInstance().setIndexMap(0);
+    }
+    @FXML
+    public void selectMap2(MouseEvent event){
+        RegisterController.getInstance().setIndexMap(1);
+    }
+    @FXML
+    public void selectMap3(MouseEvent event){
+        RegisterController.getInstance().setIndexMap(2);
+    }
+    @FXML
+    public void selectMap4(MouseEvent event){
+        RegisterController.getInstance().setIndexMap(3);
+    }
+    //---------------------------------------
 }

@@ -14,6 +14,21 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable {
+    //--------------------------------
+    private static RegisterController instance;
+    private RegisterController() {
+
+    }
+
+    public static RegisterController getInstance() {
+        if (instance == null) {
+            instance = new RegisterController() {
+
+            };
+        }
+        return instance;
+    }
+    //--------------------------------
     @FXML
     private ImageView backGround_img;
 
@@ -37,11 +52,56 @@ public class RegisterController implements Initializable {
 
     @FXML
     private Button login_btn;
+   private String username;
+  private   String password;
+  private int indexMap;
+  //----------------------------
+
+    public ImageView getBackGround_img() {
+        return backGround_img;
+    }
+
+    public void setBackGround_img(ImageView backGround_img) {
+        this.backGround_img = backGround_img;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getIndexMap() {
+        return indexMap;
+    }
+
+    public void setIndexMap(int indexMap) {
+        this.indexMap = indexMap;
+    }
+
+    //--------------------------
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
     @FXML
     public void register(MouseEvent event) throws Exception {
+        username=userName_txtField.getText();
+        password=password_txtField.getText();
         new AllMap().start((Stage) register_btn.getScene().getWindow());
+    }
+    @FXML
+    public void check(MouseEvent event)throws Exception{
+
     }
 }
