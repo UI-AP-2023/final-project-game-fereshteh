@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="746.0" prefWidth="1171.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clashofclanes.Map1Controller">
    <children>
-      <ImageView fitHeight="786.0" fitWidth="1182.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="backgorond" fitHeight="786.0" fitWidth="1182.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Map_Books_of_Clash_Scenery2.jpg" />
          </image>

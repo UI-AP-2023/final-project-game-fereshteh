@@ -32,11 +32,8 @@ public class Map extends ImageView {
         this.imageView = imageView;
     }
 
-    public Map(Image image, ArrayList<Building> buildings, double x, double y, int soldiers, ImageView imageView) {
-        super(image);
+    public Map( ArrayList<Building> buildings, int soldiers, ImageView imageView) {
         this.buildings = buildings;
-        this.x = x;
-        this.y = y;
         this.soldiers = soldiers;
         this.imageView = imageView;
     }
