@@ -1,4 +1,4 @@
-package com.example.clashofclanes;
+package com.example.clashofclanes.controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
