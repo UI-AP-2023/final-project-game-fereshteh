@@ -7,7 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -210,26 +212,40 @@ public class AllMapController implements Initializable {
     }
     //--------------------------
     @FXML
-    public void selectMap1(MouseEvent event){
+    public void selectMap1(MouseEvent event) throws IOException {
         RegisterController.setIndexMap(0);
         LoginC.getInstance().insert(RegisterController.getUsername(),RegisterController.getPassword(),0,1);
+        new Profile().start((Stage) map1_img.getScene().getWindow());
+        ProfileController.setPassword(RegisterController.getPassword());
+        System.out.println(RegisterController.getPassword());
+        System.out.println(RegisterController.getUsername());
+        ProfileController.setUsername(RegisterController.getUsername());
     }
     @FXML
-    public void selectMap2(MouseEvent event){
+    public void selectMap2(MouseEvent event) throws IOException {
         RegisterController.setIndexMap(1);
         LoginC.getInstance().insert(RegisterController.getUsername(),RegisterController.getPassword(),1,2);
+        new Profile().start((Stage) map2_img.getScene().getWindow());
+        ProfileController.setPassword(RegisterController.getPassword());
+        ProfileController.setUsername(RegisterController.getUsername());
 
     }
     @FXML
-    public void selectMap3(MouseEvent event){
+    public void selectMap3(MouseEvent event) throws IOException {
         RegisterController.setIndexMap(2);
         LoginC.getInstance().insert(RegisterController.getUsername(),RegisterController.getPassword(),2,3);
+        new Profile().start((Stage) map3_img.getScene().getWindow());
+        ProfileController.setPassword(RegisterController.getPassword());
+        ProfileController.setUsername(RegisterController.getUsername());
 
     }
     @FXML
-    public void selectMap4(MouseEvent event){
+    public void selectMap4(MouseEvent event) throws IOException {
         RegisterController.setIndexMap(3);
         LoginC.getInstance().insert(RegisterController.getUsername(),RegisterController.getPassword(),3,4);
+        new Profile().start((Stage) map4_img.getScene().getWindow());
+        ProfileController.setPassword(RegisterController.getPassword());
+        ProfileController.setUsername(RegisterController.getUsername());
 
     }
     //---------------------------------------

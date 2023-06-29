@@ -16,7 +16,7 @@ public class Profile extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("accountPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 985, 657);
+        Scene scene = new Scene(fxmlLoader.load(), 931, 621);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();

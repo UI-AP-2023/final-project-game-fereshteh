@@ -2,25 +2,27 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="619.0" prefWidth="901.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clashofclanes.ProfileController">
+<AnchorPane prefHeight="621.0" prefWidth="931.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clashofclanes.ProfileController">
    <children>
       <ImageView fx:id="backGround_img" fitHeight="619.0" fitWidth="929.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@27772531_7363694.jpg" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="profile_pane" layoutX="62.0" layoutY="78.0" prefHeight="316.0" prefWidth="281.0" style="-fx-background-color: #2f2e2d;" visible="false">
+      <AnchorPane fx:id="profile_pane" layoutX="75.0" layoutY="81.0" prefHeight="322.0" prefWidth="281.0" style="-fx-background-color: #2f2e2d;">
          <children>
             <ImageView fx:id="username_img" fitHeight="109.0" fitWidth="106.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@16880344473202.png" />
                </image>
             </ImageView>
-            <Label fx:id="username_lbl" alignment="CENTER" layoutX="114.0" layoutY="53.0" prefHeight="21.0" prefWidth="126.0" text="USERNAME" textFill="#f2e20b" />
+            <Label fx:id="username_lbl" alignment="CENTER" layoutX="114.0" layoutY="53.0" onMouseClicked="#showUsername" prefHeight="21.0" prefWidth="126.0" text="USERNAME" textFill="#f2e20b" />
             <ImageView fx:id="knight_img" fitHeight="73.0" fitWidth="85.0" layoutX="103.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@16880344472962.png" />
@@ -32,11 +34,181 @@
             <Label fx:id="failure2_lbl" layoutX="197.0" layoutY="185.0" text="Label" textFill="#f2e20b" />
             <Label fx:id="level1_lbl" layoutX="95.0" layoutY="230.0" text="LEVEL" textFill="#f2e20b" />
             <Label fx:id="level2_lbl" layoutX="160.0" layoutY="230.0" text="1" textFill="#f2e20b" />
-            <Label fx:id="passwod_lbl" alignment="CENTER" layoutX="136.0" layoutY="83.0" prefHeight="21.0" prefWidth="85.0" text="PASSWORD" textFill="#f2e20b" />
+            <Label fx:id="passwod_lbl" alignment="CENTER" layoutX="136.0" layoutY="83.0" onMouseClicked="#showPassword" prefHeight="21.0" prefWidth="85.0" text="PASSWORD" textFill="#f2e20b" />
          </children></AnchorPane>
-      <Button fx:id="profile_btn" layoutX="85.0" layoutY="574.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="218.0" style="-fx-background-color: #2f2e2d;" text="PROFILE" textFill="#f2e20b" />
-      <Button fx:id="hero_btn" layoutX="375.0" layoutY="574.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="218.0" style="-fx-background-color: #2f2e2d;" text="HEROS" textFill="#f2e20b" />
+      <Button fx:id="profile_btn" layoutX="85.0" layoutY="574.0" mnemonicParsing="false" onMouseClicked="#showProfile" prefHeight="45.0" prefWidth="218.0" style="-fx-background-color: #2f2e2d;" text="PROFILE" textFill="#f2e20b" />
+      <Button fx:id="hero_btn" layoutX="375.0" layoutY="574.0" mnemonicParsing="false" onMouseClicked="#showFirstHero" prefHeight="45.0" prefWidth="218.0" style="-fx-background-color: #2f2e2d;" text="HEROS" textFill="#f2e20b" />
       <Button fx:id="attack_btn" layoutX="630.0" layoutY="148.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="106.0" style="-fx-background-color: #2f2e2d; -fx-background-radius: 30;" text="ATTACK" textFill="#32f00c" />
-      <Button fx:id="signOut_btn" layoutX="669.0" layoutY="570.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="218.0" style="-fx-background-color: #2f2e2d;" text="SIGN OUT" textFill="#f2e20b" />
+      <Button fx:id="signOut_btn" layoutX="669.0" layoutY="570.0" mnemonicParsing="false" onMouseClicked="#signOut" prefHeight="45.0" prefWidth="218.0" style="-fx-background-color: #2f2e2d;" text="SIGN OUT" textFill="#f2e20b" />
+      <AnchorPane fx:id="Heros_pane" layoutX="25.0" layoutY="34.0" prefHeight="369.0" prefWidth="375.0" visible="false">
+         <children>
+            <AnchorPane fx:id="Hero_pane1" prefHeight="369.0" prefWidth="380.0" visible="false">
+               <children>
+                  <Rectangle fx:id="rec_p1" arcHeight="5.0" arcWidth="5.0" fill="#2e2d2c91" height="362.0" stroke="BLACK" strokeType="INSIDE" width="380.0" />
+                  <ImageView fx:id="barbarianKing_img" fitHeight="189.0" fitWidth="189.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1687789713960.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="speed_lbl_p1" alignment="CENTER" layoutX="269.0" layoutY="40.0" prefHeight="21.0" prefWidth="85.0" text="10" textFill="#f2e20b" />
+                  <ImageView fx:id="harm_img_p1" fitHeight="60.0" fitWidth="75.0" layoutX="164.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@16880344472962nuj.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="speed_img_p1" fitHeight="73.0" fitWidth="85.0" layoutX="151.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1688034447296inkn.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="speedText_lbl_p1" alignment="CENTER" layoutX="163.0" layoutY="40.0" prefHeight="21.0" prefWidth="52.0" text="speed" textAlignment="CENTER" textFill="#282828" />
+                  <Label fx:id="power_lbl_p1" alignment="CENTER" layoutX="288.0" layoutY="130.0" prefHeight="21.0" prefWidth="52.0" text="3/10" textFill="#f2e20b" />
+                  <ImageView fx:id="knight_img_p1" fitHeight="60.0" fitWidth="68.0" layoutX="158.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@16880344472962.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="healph_lbl_p1" alignment="CENTER" layoutX="281.0" layoutY="321.0" prefHeight="21.0" prefWidth="62.0" text="Healph" textFill="#f2e20b" />
+                  <ImageView fx:id="radios_img_p1" fitHeight="60.0" fitWidth="62.0" layoutX="154.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1688034447296gcvg.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="radios_lbl_p1" alignment="CENTER" layoutX="283.0" layoutY="273.0" prefHeight="21.0" prefWidth="62.0" text="20cm" textFill="#f2e20b" />
+                  <ImageView fx:id="health_img_p1" fitHeight="81.0" fitWidth="85.0" layoutX="137.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1688034447296ii.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="running_lbl_p1" alignment="CENTER" layoutX="283.0" layoutY="200.0" prefHeight="21.0" prefWidth="62.0" text="Running" textFill="#f2e20b" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="hero_pane2" prefHeight="351.0" prefWidth="380.0" visible="false">
+               <children>
+                  <Rectangle fx:id="rec_p2" arcHeight="5.0" arcWidth="5.0" fill="#2e2d2c91" height="362.0" stroke="BLACK" strokeType="INSIDE" width="380.0" />
+                  <ImageView fx:id="GrandWarden_img_p2" fitHeight="244.0" fitWidth="408.0" layoutX="-138.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1687789713713.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="harm_img_p2" fitHeight="60.0" fitWidth="75.0" layoutX="164.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@16880344472962nuj.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="speed_img_p2" fitHeight="73.0" fitWidth="85.0" layoutX="151.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1688034447296inkn.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="knight_img_p2" fitHeight="60.0" fitWidth="68.0" layoutX="159.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@16880344472962.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="radios_img_p2" fitHeight="60.0" fitWidth="62.0" layoutX="157.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1688034447296gcvg.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="health_img_p2" fitHeight="81.0" fitWidth="85.0" layoutX="140.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1688034447296ii.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="speed_lbl_p2" alignment="CENTER" layoutX="272.0" layoutY="40.0" prefHeight="21.0" prefWidth="85.0" text="10" textFill="#f2e20b" />
+                  <Label fx:id="speedText_lbl_p2" alignment="CENTER" layoutX="164.0" layoutY="40.0" prefHeight="21.0" prefWidth="52.0" text="speed" textAlignment="CENTER" textFill="#282828" />
+                  <Label fx:id="power_lbl_p2" alignment="CENTER" layoutX="288.0" layoutY="131.0" prefHeight="21.0" prefWidth="52.0" text="3/10" textFill="#f2e20b" />
+                  <Label fx:id="health_lbl_p2" alignment="CENTER" layoutX="283.0" layoutY="323.0" prefHeight="21.0" prefWidth="62.0" text="Healph" textFill="#f2e20b" />
+                  <Label fx:id="radios_lbl_p2" alignment="CENTER" layoutX="283.0" layoutY="274.0" prefHeight="21.0" prefWidth="62.0" text="20cm" textFill="#f2e20b" />
+                  <Label fx:id="running_lbl_p2" alignment="CENTER" layoutX="283.0" layoutY="200.0" prefHeight="21.0" prefWidth="62.0" text="Running" textFill="#f2e20b" />
+               </children></AnchorPane>
+            <AnchorPane fx:id="hero_pane3" prefHeight="351.0" prefWidth="380.0" visible="false">
+               <children>
+                  <Rectangle fx:id="rec_p3" arcHeight="5.0" arcWidth="5.0" fill="#2e2d2c91" height="362.0" stroke="BLACK" strokeType="INSIDE" width="380.0" />
+                  <ImageView fx:id="wizard_img_p3" fitHeight="203.0" fitWidth="154.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@wizard.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="harm_img_p3" fitHeight="60.0" fitWidth="75.0" layoutX="161.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@16880344472962nuj.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="speed_img_p3" fitHeight="73.0" fitWidth="85.0" layoutX="151.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1688034447296inkn.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="knight_img_p3" fitHeight="60.0" fitWidth="68.0" layoutX="159.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@16880344472962.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="radios_img_p3" fitHeight="60.0" fitWidth="62.0" layoutX="164.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1688034447296gcvg.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="health_img_p3" fitHeight="81.0" fitWidth="85.0" layoutX="140.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1688034447296ii.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="speed_lbl_p3" alignment="CENTER" layoutX="271.0" layoutY="40.0" prefHeight="21.0" prefWidth="85.0" text="10" textFill="#f2e20b" />
+                  <Label fx:id="speedText_lbl_p3" alignment="CENTER" layoutX="164.0" layoutY="40.0" prefHeight="21.0" prefWidth="52.0" text="speed" textAlignment="CENTER" textFill="#282828" />
+                  <Label fx:id="power_lbl_p3" alignment="CENTER" layoutX="287.0" layoutY="132.0" prefHeight="21.0" prefWidth="52.0" text="3/10" textFill="#f2e20b" />
+                  <Label fx:id="health_lbl_p3" alignment="CENTER" layoutX="282.0" layoutY="322.0" prefHeight="21.0" prefWidth="62.0" text="Healph" textFill="#f2e20b" />
+                  <Label fx:id="radios_lbl_p3" alignment="CENTER" layoutX="282.0" layoutY="274.0" prefHeight="21.0" prefWidth="62.0" text="20cm" textFill="#f2e20b" />
+                  <Label fx:id="running_lbl_p3" alignment="CENTER" layoutX="282.0" layoutY="200.0" prefHeight="21.0" prefWidth="62.0" text="Running" textFill="#f2e20b" />
+               </children></AnchorPane>
+            <AnchorPane fx:id="hero_pane4" prefHeight="351.0" prefWidth="380.0" visible="false">
+               <children>
+                  <Rectangle fx:id="rec_p4" arcHeight="5.0" arcWidth="5.0" fill="#2e2d2c91" height="362.0" stroke="BLACK" strokeType="INSIDE" width="380.0" />
+                  <ImageView fx:id="archer_img_p4" fitHeight="251.0" fitWidth="268.0" layoutX="-21.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1687789713888.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="harm_img_p4" fitHeight="60.0" fitWidth="75.0" layoutX="161.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@16880344472962nuj.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="speed_img_p4" fitHeight="73.0" fitWidth="85.0" layoutX="154.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1688034447296inkn.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="knight_img_p4" fitHeight="60.0" fitWidth="68.0" layoutX="161.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@16880344472962.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="radios_img_p4" fitHeight="60.0" fitWidth="62.0" layoutX="164.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1688034447296gcvg.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="health_img_p4" fitHeight="81.0" fitWidth="85.0" layoutX="140.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@1688034447296ii.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="speed_lbl_p4" alignment="CENTER" layoutX="269.0" layoutY="40.0" prefHeight="21.0" prefWidth="85.0" text="10" textFill="#f2e20b" />
+                  <Label fx:id="speedText_lbl_p4" alignment="CENTER" layoutX="167.0" layoutY="40.0" prefHeight="21.0" prefWidth="52.0" text="speed" textAlignment="CENTER" textFill="#282828" />
+                  <Label fx:id="power_lbl_p4" alignment="CENTER" layoutX="286.0" layoutY="133.0" prefHeight="21.0" prefWidth="52.0" text="3/10" textFill="#f2e20b" />
+                  <Label fx:id="health_lbl_p4" alignment="CENTER" layoutX="281.0" layoutY="321.0" prefHeight="21.0" prefWidth="62.0" text="Healph" textFill="#f2e20b" />
+                  <Label fx:id="radios_lbl_p4" alignment="CENTER" layoutX="281.0" layoutY="274.0" prefHeight="21.0" prefWidth="62.0" text="20cm" textFill="#f2e20b" />
+                  <Label fx:id="running_lbl_p4" alignment="CENTER" layoutX="281.0" layoutY="200.0" prefHeight="21.0" prefWidth="62.0" text="Running" textFill="#f2e20b" />
+               </children></AnchorPane>
+         </children>
+         <effect>
+            <Glow />
+         </effect>
+      </AnchorPane>
+      <Label fx:id="next_lbl" layoutX="405.0" layoutY="219.0" onMouseClicked="#nextPane" prefHeight="60.0" prefWidth="35.0" text="&gt;&gt;" visible="false" />
+      <Label fx:id="last_lbl" layoutY="229.0" onMouseClicked="#lastPane" prefHeight="60.0" prefWidth="35.0" text="&lt;&lt;" visible="false" />
    </children>
 </AnchorPane>
