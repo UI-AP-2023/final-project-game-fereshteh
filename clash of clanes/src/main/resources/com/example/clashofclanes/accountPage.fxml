@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="619.0" prefWidth="901.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clashofclanes.ProfileController">
+   <children>
+      <ImageView fx:id="backGround_img" fitHeight="619.0" fitWidth="929.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@27772531_7363694.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="profile_pane" layoutX="62.0" layoutY="78.0" prefHeight="316.0" prefWidth="281.0" style="-fx-background-color: #2f2e2d;" visible="false">
+         <children>
+            <ImageView fx:id="username_img" fitHeight="109.0" fitWidth="106.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@16880344473202.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="username_lbl" alignment="CENTER" layoutX="114.0" layoutY="53.0" prefHeight="21.0" prefWidth="126.0" text="USERNAME" textFill="#f2e20b" />
+            <ImageView fx:id="knight_img" fitHeight="73.0" fitWidth="85.0" layoutX="103.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@16880344472962.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="win1_lbl" layoutX="46.0" layoutY="160.0" text="WINS" textFill="#f2e20b" />
+            <Label fx:id="failure1_lbl" alignment="CENTER" layoutX="177.0" layoutY="160.0" prefHeight="21.0" prefWidth="75.0" text="FAILURES" textAlignment="RIGHT" textFill="#f2e20b" />
+            <Label fx:id="win2_lbl" layoutX="48.0" layoutY="185.0" text="Label" textFill="#f2e20b" />
+            <Label fx:id="failure2_lbl" layoutX="197.0" layoutY="185.0" text="Label" textFill="#f2e20b" />
+            <Label fx:id="level1_lbl" layoutX="95.0" layoutY="230.0" text="LEVEL" textFill="#f2e20b" />
+            <Label fx:id="level2_lbl" layoutX="160.0" layoutY="230.0" text="1" textFill="#f2e20b" />
+            <Label fx:id="passwod_lbl" alignment="CENTER" layoutX="136.0" layoutY="83.0" prefHeight="21.0" prefWidth="85.0" text="PASSWORD" textFill="#f2e20b" />
+         </children></AnchorPane>
+      <Button fx:id="profile_btn" layoutX="85.0" layoutY="574.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="218.0" style="-fx-background-color: #2f2e2d;" text="PROFILE" textFill="#f2e20b" />
+      <Button fx:id="hero_btn" layoutX="375.0" layoutY="574.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="218.0" style="-fx-background-color: #2f2e2d;" text="HEROS" textFill="#f2e20b" />
+      <Button fx:id="attack_btn" layoutX="630.0" layoutY="148.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="106.0" style="-fx-background-color: #2f2e2d; -fx-background-radius: 30;" text="ATTACK" textFill="#32f00c" />
+      <Button fx:id="signOut_btn" layoutX="669.0" layoutY="570.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="218.0" style="-fx-background-color: #2f2e2d;" text="SIGN OUT" textFill="#f2e20b" />
+   </children>
+</AnchorPane>

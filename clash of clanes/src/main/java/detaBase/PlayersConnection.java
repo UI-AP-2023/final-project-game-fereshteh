@@ -71,6 +71,10 @@ public class PlayersConnection {
             String SQLCom  =String.format("INSERT INTO `players`(`username`, `password`,`level`,`success`,`failure`,`map`) VALUES ('%s','%s','%d','%d','%d','%d')",username,password,level,0,0,map);
             Statement s = connection.prepareStatement(SQLCom);
             s.execute(SQLCom);
+            System.out.println(showUserName().size());
+            for (int i=0;i<showUserName().size();i++){
+                System.out.println(showUserName().get(i));
+            }
             //------------------------
             connection.close();
         } catch (ClassNotFoundException | SQLException e) {
