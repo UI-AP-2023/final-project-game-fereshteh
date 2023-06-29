@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class ProfileController implements Initializable {
@@ -58,9 +59,6 @@ public class ProfileController implements Initializable {
 
     @FXML
     private Button hero_btn;
-
-    @FXML
-    private Button attack_btn;
 
     @FXML
     private Button signOut_btn;
@@ -241,8 +239,206 @@ public class ProfileController implements Initializable {
 
     @FXML
     private Label last_lbl;
+
+    @FXML
+    private AnchorPane Attack_pane;
+
+    @FXML
+    private Rectangle showHeros_rec;
+
+    @FXML
+    private Rectangle numberOfHeros_rec;
+
+    @FXML
+    private ImageView archer_attack_img;
+
+    @FXML
+    private ImageView burburian_attack_img;
+
+    @FXML
+    private ImageView GrandWarden_attack_img;
+
+    @FXML
+    private ImageView wizard_attack_img;
+
+    @FXML
+    private Label maxHeroText_lbl;
+
+    @FXML
+    private Label maxHero_lbl;
+
+    @FXML
+    private Label numberOfArcher_lbl;
+
+    @FXML
+    private Label numberOfGrand_lbl;
+
+    @FXML
+    private Label numberOfBarbarian_lbl;
+
+    @FXML
+    private Label numberOfWizard_lbl;
+
+    @FXML
+    private Label selectedText_lbl;
+
+    @FXML
+    private Label selected_lbl;
+
+    @FXML
+    private Label nextHeroAttack_lbl;
+
+    @FXML
+    private Label lastHeroAttack_lbl;
+
+    @FXML
+    private AnchorPane Maps_pane;
+
+    @FXML
+    private AnchorPane map_pane2;
+
+    @FXML
+    private ImageView map2_img;
+
+    @FXML
+    private ImageView blackWall2_img_p2;
+
+    @FXML
+    private ImageView blackWall1_img_p2;
+
+    @FXML
+    private ImageView blackWall3_img_p2;
+
+    @FXML
+    private ImageView archerBuilding1_img_p2;
+
+    @FXML
+    private ImageView canoon1_img_p2;
+
+    @FXML
+    private ImageView canoon2_img_p2;
+
+    @FXML
+    private ImageView archerBulding2_img_p2;
+
+    @FXML
+    private AnchorPane mapPan1;
+
+    @FXML
+    private ImageView map1_img;
+    @FXML
+    private AnchorPane map4_pane;
+
+    @FXML
+    private ImageView canoonBuliding_img_p1;
+
+    @FXML
+    private ImageView blackWall2_img_p1;
+
+    @FXML
+    private ImageView blueBuliding_image_p1;
+
+    @FXML
+    private ImageView archerBuilding_img_p1;
+
+    @FXML
+    private ImageView blackWall_img_p1;
+
+    @FXML
+    private AnchorPane map3_pane;
+
+    @FXML
+    private ImageView map3_img;
+
+    @FXML
+    private ImageView blueWall_img_p3;
+
+    @FXML
+    private ImageView archerBuilding2_img_p3;
+
+    @FXML
+    private ImageView canonBuilding1_img_p3;
+
+    @FXML
+    private ImageView blackWall2_img_p3;
+
+    @FXML
+    private ImageView blackWall1_img_p3;
+
+    @FXML
+    private ImageView archerBuilding4_img_p3;
+
+    @FXML
+    private ImageView canonBuiding2_img_p3;
+
+    @FXML
+    private ImageView archerBuilding3_img_p3;
+
+    @FXML
+    private ImageView archerBuilding1_img_p3;
+
+    @FXML
+    private ImageView map4_img;
+
+    @FXML
+    private ImageView canoon4_img_p4;
+
+    @FXML
+    private ImageView canoon3_img_p4;
+
+    @FXML
+    private ImageView canoon2_img_p4;
+
+    @FXML
+    private ImageView canoon1_img_p4;
+
+    @FXML
+    private ImageView archer2_img_p4;
+
+    @FXML
+    private ImageView archer3_img_p4;
+
+    @FXML
+    private ImageView archer4_img_p4;
+
+    @FXML
+    private ImageView archer1_img_p4;
+
+    @FXML
+    private ImageView blackWall1_img_p4;
+
+    @FXML
+    private ImageView blackWall3_img_p4;
+
+    @FXML
+    private ImageView blueWall2_img_p4;
+
+    @FXML
+    private ImageView bueWall1_img_p4;
+
+    @FXML
+    private ImageView blackWall2_img_p4;
+
+    @FXML
+    private ImageView blackWall4_img_p4;
+
+    @FXML
+    private ImageView blueWall3_img_p4;
+
+    @FXML
+    private Button next_btn;
+
+    @FXML
+    private Button last_btn;
+
+    @FXML
+    private Button StartGame_btn;
+
+    @FXML
+    private Button attack_btn;
+
     //--------------------------------
-    private static  String username;
+    private static String username;
     private static String password;
     //------------------------------
 
@@ -262,6 +458,7 @@ public class ProfileController implements Initializable {
     public static void setPassword(String password) {
         ProfileController.password = password;
     }
+
     //---------------------------------
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -277,8 +474,10 @@ public class ProfileController implements Initializable {
         next_lbl.setVisible(true);
 
     }
+
     //---------------------------------
-    int check=0;
+    int check = 0;
+
     @FXML
     public void nextPane(MouseEvent event) {
 
@@ -304,6 +503,7 @@ public class ProfileController implements Initializable {
             check = 1;
         }
     }
+
     //------------------------------------------
     @FXML
     public void lastPane(MouseEvent event) {
@@ -330,25 +530,170 @@ public class ProfileController implements Initializable {
 
         }
     }
+
     //-------------------------------------
     @FXML
-    public void showProfile(MouseEvent event){
+    public void showProfile(MouseEvent event) {
         Heros_pane.setVisible(false);
         profile_pane.setVisible(true);
     }
+
     //----------------------------------------
     @FXML
     public void signOut(MouseEvent event) throws IOException {
         new Login().start((Stage) signOut_btn.getScene().getWindow());
     }
+
     //-----------------------------------------
     @FXML
-    public void showUsername(MouseEvent event){
+    public void showUsername(MouseEvent event) {
         username_lbl.setText(ProfileController.username);
     }
+
     //-------------------------------------------
     @FXML
-    public void showPassword(MouseEvent event){
-       passwod_lbl.setText(ProfileController.password);
+    public void showPassword(MouseEvent event) {
+        passwod_lbl.setText(ProfileController.password);
+    }
+
+    //----------------------------------------------
+    int max = 4;
+    int min = 1;
+    int result;
+
+    @FXML
+    public void showMaps(MouseEvent event) {
+        if (Maps_pane.isVisible()) {
+            Maps_pane.setVisible(false);
+            Attack_pane.setVisible(true);
+
+        } else {
+            Heros_pane.setVisible(false);
+            profile_pane.setVisible(false);
+            Attack_pane.setVisible(false);
+            Maps_pane.setVisible(true);
+            Random rand = new Random();
+            result = rand.nextInt((max - min) + 1) + min;
+            if (result == 1) {
+                mapPan1.setVisible(true);
+            } else if (result == 2) {
+                mapPan1.setVisible(false);
+                map_pane2.setVisible(true);
+            } else if (result == 3) {
+                map_pane2.setVisible(false);
+                map3_pane.setVisible(true);
+            } else if (result == 4) {
+                map4_pane.setVisible(true);
+            }
+        }
+    }
+
+    //-------------------------
+
+
+    @FXML
+    public void otherMap(MouseEvent event) {
+        Random rand = new Random();
+
+
+            if (result == 1) {
+                if (mapPan1.isVisible()) {
+                    result = rand.nextInt((max - min) + 1) + min;
+                } else {
+                    map4_pane.setVisible(false);
+                    map3_pane.setVisible(false);
+                    map_pane2.setVisible(false);
+                    mapPan1.setVisible(true);
+
+                }
+            }
+            //-------------------
+            else if(result==2){
+                if (map_pane2.isVisible()) {
+                    result = rand.nextInt((max - min) + 1) + min;
+                } else {
+                    mapPan1.setVisible(false);
+                    map4_pane.setVisible(false);
+                    map3_pane.setVisible(false);
+                    map_pane2.setVisible(true);
+                }
+            }
+            //-----------------------
+            else if(result==3){
+                if (map3_pane.isVisible()) {
+                    result = rand.nextInt((max - min) + 1) + min;
+                } else {
+                    mapPan1.setVisible(false);
+                    map_pane2.setVisible(false);
+                    map4_pane.setVisible(false);
+                    map3_pane.setVisible(true);
+                }
+            }
+            //-----------------
+            else if(result==4){
+                if (map4_pane.isVisible()) {
+                    result = rand.nextInt((max - min) + 1) + min;
+                } else {
+                    mapPan1.setVisible(false);
+                    map_pane2.setVisible(false);
+                    map3_pane.setVisible(false);
+                    map4_pane.setVisible(true);
+                }
+            }
+        }
+
+
+    //-----------------------------------------------
+    @FXML
+    public void nextMapPane(MouseEvent event) {
+
+        if (check == 0) {
+            mapPan1.setVisible(true);
+            check++;
+        } else if (check == 1) {
+            mapPan1.setVisible(false);
+            map_pane2.setVisible(true);
+            check++;
+
+        } else if (check == 2) {
+            map_pane2.setVisible(false);
+            map3_pane.setVisible(true);
+            check++;
+        } else if (check == 3) {
+            map3_pane.setVisible(false);
+            map4_pane.setVisible(true);
+            check++;
+        } else if (check == 4) {
+            map4_pane.setVisible(false);
+            mapPan1.setVisible(true);
+            check = 0;
+        }
+    }
+
+    //------------------------
+    @FXML
+    public void lastMapPane(MouseEvent event) {
+        if (check == 0) {
+            mapPan1.setVisible(false);
+            map4_pane.setVisible(true);
+            check = 6;
+        } else if (check == 1) {
+            mapPan1.setVisible(false);
+            map4_pane.setVisible(true);
+            check--;
+        } else if (check == 2) {
+            map_pane2.setVisible(false);
+            mapPan1.setVisible(true);
+            check--;
+        } else if (check == 4) {
+            map4_pane.setVisible(false);
+            map3_pane.setVisible(true);
+            check--;
+        } else if (check == 3) {
+            map3_pane.setVisible(false);
+            map_pane2.setVisible(true);
+            check--;
+
+        }
     }
 }
