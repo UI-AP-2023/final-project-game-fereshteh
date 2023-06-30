@@ -2,6 +2,7 @@ package model.hero;
 
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
+import model.strucrure.Building;
 
 public abstract class Hero extends ImageView
 {
@@ -67,7 +68,7 @@ public abstract class Hero extends ImageView
     }
 
     //------------------------------
-    public abstract boolean Target(Hero hero);
+    public abstract boolean Target(Building building);
     //-------------------------------
     public  void drag(Node node) {   node.setOnMousePressed(mouseEvent -> {
         XOfHero = mouseEvent.getX();

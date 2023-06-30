@@ -10,10 +10,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import model.hero.*;
 
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -559,7 +561,18 @@ public class ProfileController implements Initializable {
     int min = 1;
     int result;
     private static int indexOfAttack;
+    private ArrayList<Hero> heroes = new ArrayList<>();
+
     //-----------------------------------
+
+
+    public ArrayList<Hero> getHeroes() {
+        return heroes;
+    }
+
+    public void setHeroes(ArrayList<Hero> heroes) {
+        this.heroes = heroes;
+    }
 
     public static int getIndexOfAttack() {
         return indexOfAttack;
@@ -572,7 +585,7 @@ public class ProfileController implements Initializable {
     //------------------------------------
 
     @FXML
-    public void showMaps(MouseEvent event) {
+    public void showMaps(MouseEvent event) throws Exception {
         if (Maps_pane.isVisible()) {
             if (mapPan1.isVisible()) {
                 indexOfAttack = 0;
@@ -603,7 +616,23 @@ public class ProfileController implements Initializable {
             }
 
             //----------------------------
-        } else {
+        } else if (Attack_pane.isVisible()&&Integer.parseInt(selected_lbl.getText())!=0) {
+            if (indexOfAttack == 0) {
+                new Map1().start((Stage) attack_btn.getScene().getWindow());
+            }
+            else if(indexOfAttack==1){
+                new Map2().start((Stage) attack_btn.getScene().getWindow());
+            }
+            else if(indexOfAttack==2){
+                new Map3().start((Stage) attack_btn.getScene().getWindow());
+            }
+            else if(indexOfAttack==3){
+                new Map4().start((Stage) attack_btn.getScene().getWindow());
+            }
+            System.out.println("max");
+        }
+        //-----------
+        else {
             Heros_pane.setVisible(false);
             profile_pane.setVisible(false);
             Attack_pane.setVisible(false);
@@ -750,8 +779,22 @@ public class ProfileController implements Initializable {
             selected++;
             selected_lbl.setText(String.valueOf(selected));
             numberOfArcher_lbl.setText(String.valueOf(numberOfArcher));
+            Archer_Queen archerQueen = new Archer_Queen(RegisterController.getIndexMap() * 10, RegisterController.getIndexMap() * 10, 20, archer1_img_p4, 40);
+            heroes.add(archerQueen);
+            //------------------------------
+            if (indexOfAttack == 0) {
+                Map1Controller.addHero(archerQueen);
+            }
+            //----------------------
+            else if (indexOfAttack == 1) {
+                Map2Controller.addHero(archerQueen);
+            } else if (indexOfAttack == 2) {
+                Map3Controller.addHero(archerQueen);
+            } else if (indexOfAttack == 3) {
+                Map4Controller.addHero(archerQueen);
+            }
         } else {
-            selectedText_lbl.setText("IT IS MAX");
+            selectedText_lbl.setText("MAX");
         }
     }
 
@@ -763,8 +806,22 @@ public class ProfileController implements Initializable {
             selected++;
             selected_lbl.setText(String.valueOf(selected));
             numberOfWizard_lbl.setText(String.valueOf(numberOfWizard));
+            Royal_Champion royalChampion = new Royal_Champion(RegisterController.getIndexMap() * 6, RegisterController.getIndexMap() * 4, 15, wizard_attack_img, 25);
+            heroes.add(royalChampion);
+            //---------------------
+            if (indexOfAttack == 0) {
+                Map1Controller.addHero(royalChampion);
+            }
+            //----------------------
+            else if (indexOfAttack == 1) {
+                Map2Controller.addHero(royalChampion);
+            } else if (indexOfAttack == 2) {
+                Map3Controller.addHero(royalChampion);
+            } else if (indexOfAttack == 3) {
+                Map4Controller.addHero(royalChampion);
+            }
         } else {
-            selectedText_lbl.setText("IT IS MAX");
+            selectedText_lbl.setText("MAX");
         }
     }
 
@@ -776,8 +833,22 @@ public class ProfileController implements Initializable {
             selected++;
             selected_lbl.setText(String.valueOf(selected));
             numberOfGrand_lbl.setText(String.valueOf(numberOfGrand));
+            Grand_Warden grandWarden = new Grand_Warden(RegisterController.getIndexMap() * 7, RegisterController.getIndexMap() * 3, 12, GrandWarden_img_p2, 35);
+            heroes.add(grandWarden);
+            //-------------------
+            if (indexOfAttack == 0) {
+                Map1Controller.addHero(grandWarden);
+            }
+            //----------------------
+            else if (indexOfAttack == 1) {
+                Map2Controller.addHero(grandWarden);
+            } else if (indexOfAttack == 2) {
+                Map3Controller.addHero(grandWarden);
+            } else if (indexOfAttack == 3) {
+                Map4Controller.addHero(grandWarden);
+            }
         } else {
-            selectedText_lbl.setText("IT IS MAX");
+            selectedText_lbl.setText("MAX");
         }
     }
 
@@ -789,12 +860,24 @@ public class ProfileController implements Initializable {
             selected++;
             selected_lbl.setText(String.valueOf(selected));
             numberOfBarbarian_lbl.setText(String.valueOf(numberOfBarbarian));
+            Barbarian_King barbarianKing = new Barbarian_King(RegisterController.getIndexMap() * 5, RegisterController.getIndexMap() * 2, 10, barbarianKing_img, 30);
+            heroes.add(barbarianKing);
+            if (indexOfAttack == 0) {
+                Map1Controller.addHero(barbarianKing);
+            }
+            //----------------------
+            else if (indexOfAttack == 1) {
+                Map2Controller.addHero(barbarianKing);
+            } else if (indexOfAttack == 2) {
+                Map3Controller.addHero(barbarianKing);
+            } else if (indexOfAttack == 3) {
+                Map4Controller.addHero(barbarianKing);
+            }
         } else {
-            selectedText_lbl.setText("IT IS MAX");
+            selectedText_lbl.setText("MAX");
         }
     }
     //-----------------------------------
-
 
 
 }

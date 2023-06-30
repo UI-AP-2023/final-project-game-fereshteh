@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.hero.Hero;
+import model.strucrure.Building;
 
 import java.io.IOException;
 
@@ -21,4 +23,5 @@ public class Map1 extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
 }
