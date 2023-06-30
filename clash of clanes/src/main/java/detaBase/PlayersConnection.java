@@ -1,5 +1,7 @@
 package detaBase;
 
+import javafx.scene.input.MouseEvent;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -7,6 +9,7 @@ public class PlayersConnection {
     //-----------------------------------------
 
     private static PlayersConnection instance;
+
     private PlayersConnection() {
 
     }
@@ -19,18 +22,19 @@ public class PlayersConnection {
         }
         return instance;
     }
+
     //----------------------------------------------
-    public ArrayList<String> showUserName(){
+    public ArrayList<String> showUserName() {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db","server","1234");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db", "server", "1234");
 
-            String SQLCom  ="SELECT `username` FROM `players`";
+            String SQLCom = "SELECT `username` FROM `players`";
             Statement s = connection.prepareStatement(SQLCom);
-            ResultSet resultSet =  s.executeQuery(SQLCom);
+            ResultSet resultSet = s.executeQuery(SQLCom);
             ArrayList<String> users = new ArrayList<>();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 users.add(resultSet.getString("username"));
             }
             connection.close();
@@ -39,18 +43,19 @@ public class PlayersConnection {
             throw new RuntimeException(e);
         }
     }
+
     //-----------------------------------------------------
-    public String getPassword(String username){
+    public String getPassword(String username) {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db","server","1234");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db", "server", "1234");
 
-            String SQLCom  =String.format("SELECT `password` FROM `players` WHERE (username ='%s')",username);
+            String SQLCom = String.format("SELECT `password` FROM `players` WHERE (username ='%s')", username);
             Statement s = connection.prepareStatement(SQLCom);
-            ResultSet resultSet =  s.executeQuery(SQLCom);
-            String password="";
-            while (resultSet.next()){
+            ResultSet resultSet = s.executeQuery(SQLCom);
+            String password = "";
+            while (resultSet.next()) {
                 password = resultSet.getString("password");
             }
 
@@ -61,18 +66,19 @@ public class PlayersConnection {
             throw new RuntimeException(e);
         }
     }
+
     //-----------------------------------------------------------------
-    public void savePlayer(String username,String password,int map,int level){
+    public void savePlayer(String username, String password, int map, int level) {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db","server","1234");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db", "server", "1234");
 
-            String SQLCom  =String.format("INSERT INTO `players`(`username`, `password`,`level`,`success`,`failure`,`map`) VALUES ('%s','%s','%d','%d','%d','%d')",username,password,level,0,0,map);
+            String SQLCom = String.format("INSERT INTO `players`(`username`, `password`,`level`,`success`,`failure`,`map`) VALUES ('%s','%s','%d','%d','%d','%d')", username, password, level, 0, 0, map);
             Statement s = connection.prepareStatement(SQLCom);
             s.execute(SQLCom);
             System.out.println(showUserName().size());
-            for (int i=0;i<showUserName().size();i++){
+            for (int i = 0; i < showUserName().size(); i++) {
                 System.out.println(showUserName().get(i));
             }
             //------------------------
@@ -81,6 +87,26 @@ public class PlayersConnection {
             throw new RuntimeException(e);
         }
     }
-    //---------------------------------------------------------------------
 
+    //---------------------------------------------------------------------
+    public ArrayList attack(int index) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db", "server", "1234");
+
+            String SQLCom = String.format("SELECT `username` FROM `players` WHERE (map ='%d')", index);
+            Statement s = connection.prepareStatement(SQLCom);
+            ResultSet resultSet = s.executeQuery(SQLCom);
+            ArrayList<String> users = new ArrayList<>();
+            while (resultSet.next()) {
+                users.add(resultSet.getString("username"));
+            }
+            connection.close();
+            return users;
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
+    //------------------------------
+

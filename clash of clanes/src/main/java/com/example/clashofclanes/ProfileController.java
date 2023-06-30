@@ -1,5 +1,6 @@
 package com.example.clashofclanes;
 
+import detaBase.PlayersConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -472,7 +473,6 @@ public class ProfileController implements Initializable {
         Hero_pane1.setVisible(true);
         last_lbl.setVisible(true);
         next_lbl.setVisible(true);
-
     }
 
     //---------------------------------
@@ -488,7 +488,6 @@ public class ProfileController implements Initializable {
             Hero_pane1.setVisible(false);
             hero_pane2.setVisible(true);
             check++;
-
         } else if (check == 2) {
             hero_pane2.setVisible(false);
             hero_pane3.setVisible(true);
@@ -527,7 +526,6 @@ public class ProfileController implements Initializable {
             hero_pane3.setVisible(false);
             hero_pane2.setVisible(true);
             check--;
-
         }
     }
 
@@ -560,32 +558,86 @@ public class ProfileController implements Initializable {
     int max = 4;
     int min = 1;
     int result;
+    private static int indexOfAttack;
+    //-----------------------------------
+
+    public static int getIndexOfAttack() {
+        return indexOfAttack;
+    }
+
+    public static void setIndexOfAttack(int indexOfAttack) {
+        ProfileController.indexOfAttack = indexOfAttack;
+    }
+
+    //------------------------------------
 
     @FXML
     public void showMaps(MouseEvent event) {
         if (Maps_pane.isVisible()) {
+            if (mapPan1.isVisible()) {
+                indexOfAttack = 0;
+                mapPan1.setVisible(false);
+            } else if (map_pane2.isVisible()) {
+                indexOfAttack = 1;
+                map_pane2.setVisible(false);
+            } else if (map3_pane.isVisible()) {
+                indexOfAttack = 2;
+                map3_pane.setVisible(false);
+            } else if (map4_pane.isVisible()) {
+                indexOfAttack = 3;
+                map4_pane.setVisible(false);
+            }
+            //--------------------
             Maps_pane.setVisible(false);
             Attack_pane.setVisible(true);
+            System.out.println(indexOfAttack);
+            //------------------------------
+            if (RegisterController.getIndexMap() == 0) {
+                maxHero_lbl.setText("2");
+            } else if (RegisterController.getIndexMap() == 1) {
+                maxHero_lbl.setText("4");
+            } else if (RegisterController.getIndexMap() == 2) {
+                maxHero_lbl.setText("6");
+            } else if (RegisterController.getIndexMap() == 3) {
+                maxHero_lbl.setText("10");
+            }
 
+            //----------------------------
         } else {
             Heros_pane.setVisible(false);
             profile_pane.setVisible(false);
             Attack_pane.setVisible(false);
+            mapPan1.setVisible(false);
+            map_pane2.setVisible(false);
+            map3_pane.setVisible(false);
+            map4_pane.setVisible(false);
+            //-------------------------
             Maps_pane.setVisible(true);
             Random rand = new Random();
             result = rand.nextInt((max - min) + 1) + min;
             if (result == 1) {
                 mapPan1.setVisible(true);
+                map_pane2.setVisible(false);
+                map3_pane.setVisible(false);
+                map4_pane.setVisible(false);
             } else if (result == 2) {
                 mapPan1.setVisible(false);
+                map3_pane.setVisible(false);
+                map4_pane.setVisible(false);
                 map_pane2.setVisible(true);
             } else if (result == 3) {
+                mapPan1.setVisible(false);
+                map4_pane.setVisible(false);
                 map_pane2.setVisible(false);
                 map3_pane.setVisible(true);
             } else if (result == 4) {
+                mapPan1.setVisible(false);
+                map_pane2.setVisible(false);
+                map3_pane.setVisible(false);
                 map4_pane.setVisible(true);
             }
         }
+
     }
 
     //-------------------------
@@ -594,106 +646,155 @@ public class ProfileController implements Initializable {
     @FXML
     public void otherMap(MouseEvent event) {
         Random rand = new Random();
-
-
-            if (result == 1) {
-                if (mapPan1.isVisible()) {
-                    result = rand.nextInt((max - min) + 1) + min;
-                } else {
-                    map4_pane.setVisible(false);
-                    map3_pane.setVisible(false);
-                    map_pane2.setVisible(false);
-                    mapPan1.setVisible(true);
-
-                }
-            }
-            //-------------------
-            else if(result==2){
-                if (map_pane2.isVisible()) {
-                    result = rand.nextInt((max - min) + 1) + min;
-                } else {
-                    mapPan1.setVisible(false);
-                    map4_pane.setVisible(false);
-                    map3_pane.setVisible(false);
-                    map_pane2.setVisible(true);
-                }
-            }
-            //-----------------------
-            else if(result==3){
-                if (map3_pane.isVisible()) {
-                    result = rand.nextInt((max - min) + 1) + min;
-                } else {
-                    mapPan1.setVisible(false);
-                    map_pane2.setVisible(false);
-                    map4_pane.setVisible(false);
-                    map3_pane.setVisible(true);
-                }
-            }
-            //-----------------
-            else if(result==4){
-                if (map4_pane.isVisible()) {
-                    result = rand.nextInt((max - min) + 1) + min;
-                } else {
-                    mapPan1.setVisible(false);
-                    map_pane2.setVisible(false);
-                    map3_pane.setVisible(false);
-                    map4_pane.setVisible(true);
-                }
+        if (result == 1) {
+            if (mapPan1.isVisible()) {
+                result = rand.nextInt((max - min) + 1) + min;
+            } else {
+                map4_pane.setVisible(false);
+                map3_pane.setVisible(false);
+                map_pane2.setVisible(false);
+                mapPan1.setVisible(true);
             }
         }
+        //-------------------
+        else if (result == 2) {
+            if (map_pane2.isVisible()) {
+                result = rand.nextInt((max - min) + 1) + min;
+            } else {
+                mapPan1.setVisible(false);
+                map4_pane.setVisible(false);
+                map3_pane.setVisible(false);
+                map_pane2.setVisible(true);
+            }
+        }
+        //-----------------------
+        else if (result == 3) {
+            if (map3_pane.isVisible()) {
+                result = rand.nextInt((max - min) + 1) + min;
+            } else {
+                mapPan1.setVisible(false);
+                map_pane2.setVisible(false);
+                map4_pane.setVisible(false);
+                map3_pane.setVisible(true);
+            }
+        }
+        //-----------------
+        else if (result == 4) {
+            if (map4_pane.isVisible()) {
+                result = rand.nextInt((max - min) + 1) + min;
+            } else {
+                mapPan1.setVisible(false);
+                map_pane2.setVisible(false);
+                map3_pane.setVisible(false);
+                map4_pane.setVisible(true);
+            }
+        }
+    }
 
 
     //-----------------------------------------------
+    private static int numberOfArcher = 0;
+    private static int numberOfBarbarian = 0;
+    private static int numberOfGrand = 0;
+    private static int numberOfWizard = 0;
+    private static int selected = 0;
+    //-------------------------------------
+
+    public ImageView getBackGround_img() {
+        return backGround_img;
+    }
+
+    public void setBackGround_img(ImageView backGround_img) {
+        this.backGround_img = backGround_img;
+    }
+
+    public static int getNumberOfArcher() {
+        return numberOfArcher;
+    }
+
+    public static void setNumberOfArcher(int numberOfArcher) {
+        ProfileController.numberOfArcher = numberOfArcher;
+    }
+
+    public static int getNumberOfBarbarian() {
+        return numberOfBarbarian;
+    }
+
+    public static void setNumberOfBarbarian(int numberOfBarbarian) {
+        ProfileController.numberOfBarbarian = numberOfBarbarian;
+    }
+
+    public static int getNumberOfGrand() {
+        return numberOfGrand;
+    }
+
+    public static void setNumberOfGrand(int numberOfGrand) {
+        ProfileController.numberOfGrand = numberOfGrand;
+    }
+
+    public static int getNumberOfWizard() {
+        return numberOfWizard;
+    }
+
+    public static void setNumberOfWizard(int numberOfWizard) {
+        ProfileController.numberOfWizard = numberOfWizard;
+    }
+
+    //-------------------------------------
+
+
     @FXML
-    public void nextMapPane(MouseEvent event) {
-
-        if (check == 0) {
-            mapPan1.setVisible(true);
-            check++;
-        } else if (check == 1) {
-            mapPan1.setVisible(false);
-            map_pane2.setVisible(true);
-            check++;
-
-        } else if (check == 2) {
-            map_pane2.setVisible(false);
-            map3_pane.setVisible(true);
-            check++;
-        } else if (check == 3) {
-            map3_pane.setVisible(false);
-            map4_pane.setVisible(true);
-            check++;
-        } else if (check == 4) {
-            map4_pane.setVisible(false);
-            mapPan1.setVisible(true);
-            check = 0;
+    public void selectArcher(MouseEvent event) {
+        if (Integer.parseInt(selected_lbl.getText()) < Integer.parseInt(maxHero_lbl.getText())) {
+            numberOfArcher++;
+            selected++;
+            selected_lbl.setText(String.valueOf(selected));
+            numberOfArcher_lbl.setText(String.valueOf(numberOfArcher));
+        } else {
+            selectedText_lbl.setText("IT IS MAX");
         }
     }
 
     //------------------------
     @FXML
-    public void lastMapPane(MouseEvent event) {
-        if (check == 0) {
-            mapPan1.setVisible(false);
-            map4_pane.setVisible(true);
-            check = 6;
-        } else if (check == 1) {
-            mapPan1.setVisible(false);
-            map4_pane.setVisible(true);
-            check--;
-        } else if (check == 2) {
-            map_pane2.setVisible(false);
-            mapPan1.setVisible(true);
-            check--;
-        } else if (check == 4) {
-            map4_pane.setVisible(false);
-            map3_pane.setVisible(true);
-            check--;
-        } else if (check == 3) {
-            map3_pane.setVisible(false);
-            map_pane2.setVisible(true);
-            check--;
-
+    public void selectWizard(MouseEvent event) {
+        if (Integer.parseInt(selected_lbl.getText()) < Integer.parseInt(maxHero_lbl.getText())) {
+            numberOfWizard++;
+            selected++;
+            selected_lbl.setText(String.valueOf(selected));
+            numberOfWizard_lbl.setText(String.valueOf(numberOfWizard));
+        } else {
+            selectedText_lbl.setText("IT IS MAX");
         }
     }
+
+    //---------------------------
+    @FXML
+    public void selectGrand(MouseEvent event) {
+        if (Integer.parseInt(selected_lbl.getText()) < Integer.parseInt(maxHero_lbl.getText())) {
+            numberOfGrand++;
+            selected++;
+            selected_lbl.setText(String.valueOf(selected));
+            numberOfGrand_lbl.setText(String.valueOf(numberOfGrand));
+        } else {
+            selectedText_lbl.setText("IT IS MAX");
+        }
+    }
+
+    //--------------------------------
+    @FXML
+    public void selectBarbarian(MouseEvent event) {
+        if (Integer.parseInt(selected_lbl.getText()) < Integer.parseInt(maxHero_lbl.getText())) {
+            numberOfBarbarian++;
+            selected++;
+            selected_lbl.setText(String.valueOf(selected));
+            numberOfBarbarian_lbl.setText(String.valueOf(numberOfBarbarian));
+        } else {
+            selectedText_lbl.setText("IT IS MAX");
+        }
+    }
+    //-----------------------------------
+
+
+
 }

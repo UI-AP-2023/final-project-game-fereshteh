@@ -1,17 +1,23 @@
 package controller;
 
+import com.example.clashofclanes.ProfileController;
+import detaBase.PlayersConnection;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class playerController {
-    public void savePlayer(String id, String password,int map) throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db","server","1234");
-
-        String SQLCom  =String.format("INSERT INTO `players`(`userID`, `username`,'level','success','failure','map') VALUES ('%s','%s','%d','%d','%d','%d')",password,id,1,0,0,map);
-        Statement s = connection.prepareStatement(SQLCom);
-        s.execute(SQLCom);
+    public String attackToPlayer() {
+        int result;
+        ArrayList usernames = PlayersConnection.getInstance().attack(ProfileController.getIndexOfAttack());
+        int min = 0;
+        int max = usernames.size()-1;
+        Random rand = new Random();
+        result = rand.nextInt((max - min) + 1) + min;
+        return (String) usernames.get(result);
     }
 }

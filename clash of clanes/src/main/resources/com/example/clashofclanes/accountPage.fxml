@@ -213,22 +213,22 @@
          <children>
             <Rectangle fx:id="showHeros_rec" arcHeight="5.0" arcWidth="5.0" fill="#2e2d2cbc" height="159.0" layoutX="24.0" layoutY="141.0" stroke="#2f2e2d" strokeType="INSIDE" width="526.0" />
             <Rectangle fx:id="numberOfHeros_rec" arcHeight="5.0" arcWidth="5.0" fill="#2e2d2cbc" height="59.0" layoutX="171.0" layoutY="47.0" stroke="#2f2e2d" strokeType="INSIDE" width="228.0" />
-            <ImageView fx:id="archer_attack_img" fitHeight="113.0" fitWidth="106.0" layoutX="23.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="archer_attack_img" fitHeight="113.0" fitWidth="106.0" layoutX="23.0" layoutY="158.0" onMouseClicked="#selectArcher" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@1687789713888.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="burburian_attack_img" fitHeight="120.0" fitWidth="122.0" layoutX="154.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="burburian_attack_img" fitHeight="120.0" fitWidth="122.0" layoutX="154.0" layoutY="151.0" onMouseClicked="#selectBarbarian" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@1687789713960.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="GrandWarden_attack_img" fitHeight="120.0" fitWidth="106.0" layoutX="288.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="GrandWarden_attack_img" fitHeight="120.0" fitWidth="106.0" layoutX="288.0" layoutY="159.0" onMouseClicked="#selectGrand" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@ikinh.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="wizard_attack_img" fitHeight="120.0" fitWidth="106.0" layoutX="423.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="wizard_attack_img" fitHeight="120.0" fitWidth="106.0" layoutX="423.0" layoutY="159.0" onMouseClicked="#selectWizard" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@wizard.png" />
                </image>
