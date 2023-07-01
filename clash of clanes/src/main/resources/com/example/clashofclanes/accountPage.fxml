@@ -209,7 +209,7 @@
       </AnchorPane>
       <Label fx:id="next_lbl" layoutX="405.0" layoutY="219.0" onMouseClicked="#nextPane" prefHeight="60.0" prefWidth="35.0" text="&gt;&gt;" visible="false" />
       <Label fx:id="last_lbl" layoutY="229.0" onMouseClicked="#lastPane" prefHeight="60.0" prefWidth="35.0" text="&lt;&lt;" visible="false" />
-      <AnchorPane fx:id="Attack_pane" layoutX="9.0" layoutY="156.0" prefHeight="300.0" prefWidth="570.0">
+      <AnchorPane fx:id="Attack_pane" layoutX="9.0" layoutY="156.0" prefHeight="300.0" prefWidth="570.0" visible="false">
          <children>
             <Rectangle fx:id="showHeros_rec" arcHeight="5.0" arcWidth="5.0" fill="#2e2d2cbc" height="159.0" layoutX="24.0" layoutY="141.0" stroke="#2f2e2d" strokeType="INSIDE" width="526.0" />
             <Rectangle fx:id="numberOfHeros_rec" arcHeight="5.0" arcWidth="5.0" fill="#2e2d2cbc" height="59.0" layoutX="171.0" layoutY="47.0" stroke="#2f2e2d" strokeType="INSIDE" width="228.0" />

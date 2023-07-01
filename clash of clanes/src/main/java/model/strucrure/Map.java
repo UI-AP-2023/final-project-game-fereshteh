@@ -1,27 +1,34 @@
 package model.strucrure;
 
+import com.example.clashofclanes.Map1Controller;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import model.hero.Hero;
 
 import java.util.ArrayList;
 
 public class Map extends ImageView {
-    private ArrayList<Building> buildings=new ArrayList<>();
-    public ArrayList<Hero>heroes=new ArrayList<>();
-    private   double x;
-    private   double y;
+    private ArrayList<Building> buildings = new ArrayList<>();
+    public ArrayList<Hero> heroes = new ArrayList<>();
+    private double x;
+    private double y;
     private int numberOfSoldiers;
 
     //------------------------------------
+    Timeline timer;
+
     ImageView imageView = new ImageView();
     //----------------
 
 
-
-    public Map( ArrayList<Building> buildings, int soldiers, ImageView imageView) {
+    public Map(ArrayList<Building> buildings, int soldiers, ImageView imageView) {
         this.buildings = buildings;
         this.numberOfSoldiers = soldiers;
         this.imageView = imageView;
+
     }
 
     public ArrayList<Building> getBuildings() {
@@ -31,10 +38,12 @@ public class Map extends ImageView {
     public void setBuildings(ArrayList<Building> buildings) {
         this.buildings = buildings;
     }
+
     //------------------------------------
-    public void addBuilding(Building building){
+    public void addBuilding(Building building) {
         buildings.add(building);
     }
+
     //---------------------------------------
     public ImageView getImageView() {
         return imageView;
@@ -64,7 +73,8 @@ public class Map extends ImageView {
     public void setNumberOfSoldiers(int numberOfSoldiers) {
         this.numberOfSoldiers = numberOfSoldiers;
     }
+
     //------------------------------------
 
-
+    //----------------------------
 }

@@ -1,6 +1,5 @@
 package com.example.clashofclanes;
 
-import detaBase.PlayersConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -806,7 +805,7 @@ public class ProfileController implements Initializable {
             selected++;
             selected_lbl.setText(String.valueOf(selected));
             numberOfWizard_lbl.setText(String.valueOf(numberOfWizard));
-            Royal_Champion royalChampion = new Royal_Champion(RegisterController.getIndexMap() * 6, RegisterController.getIndexMap() * 4, 15, wizard_attack_img, 25);
+            Wizard royalChampion = new Wizard(RegisterController.getIndexMap() * 6, RegisterController.getIndexMap() * 4, 15, wizard_attack_img, 25);
             heroes.add(royalChampion);
             //---------------------
             if (indexOfAttack == 0) {

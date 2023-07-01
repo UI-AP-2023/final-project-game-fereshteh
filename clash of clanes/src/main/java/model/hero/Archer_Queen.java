@@ -6,6 +6,7 @@ import model.strucrure.Building;
 public class Archer_Queen extends Hero {
     public Archer_Queen(double power, double speed, double health, ImageView imageView,int radios) {
         super(power, speed, health, imageView,radios);
+        super.setName("archer");
     }
 
     @Override
@@ -16,5 +17,9 @@ public class Archer_Queen extends Hero {
             return false;
     }
     //-------------------------------------------
+    @Override
+    public Hero newHero() {
+        return new Archer_Queen(this.getPower(),this.getSpeed(),this.getHealth(),this.getImageView(),this.getRadiosOfAttack());
 
+    }
 }

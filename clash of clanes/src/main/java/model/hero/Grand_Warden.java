@@ -7,6 +7,7 @@ import model.strucrure.Building;
 public class Grand_Warden extends Hero {
     public Grand_Warden(double power, double speed, double health, ImageView imageView, int radiosOfAttack) {
         super(power, speed, health, imageView, radiosOfAttack);
+        super.setName("grand");
     }
 
     @Override
@@ -15,6 +16,12 @@ public class Grand_Warden extends Hero {
             return true;
         else
             return false;
+    }
+
+    @Override
+    public Hero newHero() {
+        return new Grand_Warden(this.getPower(),this.getSpeed(),this.getHealth(),this.getImageView(),this.getRadiosOfAttack());
+
     }
     //-------------------------------
 

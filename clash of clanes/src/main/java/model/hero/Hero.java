@@ -7,6 +7,7 @@ import model.strucrure.Building;
 public abstract class Hero extends ImageView
 {
     private double power;
+    String name;
     private double speed;
     private double health;
     private  ImageView imageView;
@@ -67,19 +68,20 @@ public abstract class Hero extends ImageView
         this.radiosOfAttack = radiosOfAttack;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     //------------------------------
     public abstract boolean Target(Building building);
+    public abstract Hero newHero();
     //-------------------------------
-    public  void drag(Node node) {   node.setOnMousePressed(mouseEvent -> {
-        XOfHero = mouseEvent.getX();
-        YOfHero=mouseEvent.getY();
-    });
-
-        node.setOnMouseDragged(mouseEvent -> {
-            node.setLayoutX(mouseEvent.getSceneX()-XOfHero);
-            node.setLayoutY(mouseEvent.getSceneY()-YOfHero);
-
-        });}
+    public  void drag(Node node) {
+      }
     //-------------------------------
 
 }

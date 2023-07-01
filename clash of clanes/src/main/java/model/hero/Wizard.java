@@ -1,12 +1,12 @@
 package model.hero;
 
 import javafx.scene.image.ImageView;
-import model.hero.Hero;
 import model.strucrure.Building;
 
-public class Royal_Champion extends Hero {
-    public Royal_Champion(double power, double speed, double health, ImageView imageView, int radiosOfAttack) {
+public class Wizard extends Hero {
+    public Wizard(double power, double speed, double health, ImageView imageView, int radiosOfAttack) {
         super(power, speed, health, imageView, radiosOfAttack);
+        super.setName("wizard");
     }
 
     @Override
@@ -16,4 +16,8 @@ public class Royal_Champion extends Hero {
         else
             return false;
     }
+    public Wizard newHero(){
+        return new Wizard(super.getPower(),super.getSpeed(),super.getHealth(),super.getImageView(),super.getRadiosOfAttack());
+    }
+
 }
