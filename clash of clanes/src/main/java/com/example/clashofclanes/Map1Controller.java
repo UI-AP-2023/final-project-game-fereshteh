@@ -1,5 +1,6 @@
 package com.example.clashofclanes;
 
+import controller.MapC;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -85,25 +86,36 @@ public class Map1Controller implements Initializable {
     }
 
     //------------------------------
+    Wizard wizard;
+    Archer_Queen archerQueen;
+    Barbarian_King barbarianKing;
+    Grand_Warden grandWarden;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Map map = new Map(buildings, 20, backgorond);
+        wizard=new Wizard(10,3,5,Wizard_img,20);
+        grandWarden=new Grand_Warden(10,10,3,GrandWarden_img,5);
+        heroes.add(wizard);
+        heroes.add(grandWarden);
+        System.out.println("building size"+buildings.size());
+
         setHero();
         setBuildings();
-        numberOfHeros();
         System.out.println("heros size:" + heroes.size());
         for (int i = 0; i < heroes.size(); i++) {
             System.out.println(heroes.get(i).getName());
         }
-        if (numberOfWizard == 0) {
+        if (wizard == null) {
             Wizard_img.setVisible(false);
-        }
-        else {
+        } else {
             Wizard_img.setVisible(true);
         }
-        if (numberOfGrand == 0) {
+        if (grandWarden == null) {
             GrandWarden_img.setVisible(false);
+        }
+        else {
+            GrandWarden_img.setVisible(true);
         }
         if (numberOfBarbarian == 0) {
             barbarianKing_img.setVisible(false);
@@ -120,20 +132,12 @@ public class Map1Controller implements Initializable {
         tt.setToX(450);
         tt.setToZ(-200);
         tt.play();
-        //------------------------------
-        //wizard=new Wizard(10,10,10,Wizard_img,10);
-       // archerQueen=new Archer_Queen(10,20,20,archerQueen_img,10);
-//        Wizard_img.setOnMouseClicked(event -> Dragg(wizard));
-        //------------------------------
-
+          numberOfHeros();
 
     }
 
     //--------------------------------------------------
-    Wizard wizard;
-    Archer_Queen archerQueen;
-    Barbarian_King barbarianKing;
-    Grand_Warden grandWarden;
+
 
     //add building
     public void setBuildings() {
@@ -185,10 +189,10 @@ public class Map1Controller implements Initializable {
                 numberOfBarbarian++;
             }
         }
-        System.out.println("number wizard"+numberOfWizard);
-        System.out.println("number archer"+numberOfArcher);
-        System.out.println("number barbarian"+numberOfBarbarian);
-        System.out.println("number grand"+numberOfGrand);
+        System.out.println("number wizard" + numberOfWizard);
+        System.out.println("number archer" + numberOfArcher);
+        System.out.println("number barbarian" + numberOfBarbarian);
+        System.out.println("number grand" + numberOfGrand);
 
 
     }
@@ -196,65 +200,22 @@ public class Map1Controller implements Initializable {
     //---------------------------------
     double deltaX = 1000;
     double deltaY = 1000;
-
-    public void startGame() {
-        for (Hero hero : heroes) {
-
-            for (Building building : buildings) {
-
-
-                if (hero.Target(building)) {
-                    while (hero.getHealth() > 0 && building.getHealth() > 0) {
-                        if (deltaX < Math.abs(hero.getLayoutX() - building.getLayoutX()) && deltaY < Math.abs(hero.getLayoutY() - building.getLayoutY())) {
-                            deltaX = (hero.getLayoutX() - building.getLayoutX());
-                            deltaY = (hero.getLayoutY() - building.getLayoutY());
-                            if (deltaX < 0) {
-                                TranslateTransition tt = new TranslateTransition(Duration.millis(2000));
-
-                            }
-                            hero.setHealth(hero.getHealth() - building.getAttack_power());
-                            building.setHealth(building.getHealth() - hero.getPower());
-
-                            if (hero.getHealth() <= 0) {
-
-
-                                this.pane.getChildren().remove(hero.getImageView());
-
-                            }
-                            if (building.getHealth() <= 0) {
-                                pane.getChildren().remove(building.getImageView());
-
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     //------------------------
-    Timeline timer;
+
 
     @FXML
     void click_Start(MouseEvent event) {
-        timer.play();
-
+        MapC.getInstance().setHeroes(draggedHero);
+        MapC.getInstance().setBuildings(buildings);
+        MapC.getInstance().GamePageController();
     }
 
-    void initTimer() {
 
-        timer = new Timeline(
-                new KeyFrame(
-                        Duration.seconds(0.1),
-                        e -> startGame()
-                )
-        );
-        timer.setCycleCount(Animation.INDEFINITE);
-    }
     //---------------------
 
 
     //-----------------------
+    ArrayList<Hero>draggedHero=new ArrayList<>();
 
 
     public static ImageView makeCopy(String path, ImageView imageView, double x, double y) {
@@ -274,7 +235,7 @@ public class Map1Controller implements Initializable {
         return imageView;
     }
 
-     //-------------------------------
+    //-------------------------------
     int counterWizard = 0;
     @FXML
     public static ImageView wizardImagviewObject = new ImageView();
@@ -287,17 +248,13 @@ public class Map1Controller implements Initializable {
             wizard2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\wizard.png", wizardImagviewObject, Wizard_img.getLayoutX(), Wizard_img.getLayoutY()));
 
             Map1.root.getChildren().add(wizard2);
+            draggedHero.add(wizard2);
             // playGroundHeroesTA.add(ta_music);
 
             wizardImagviewObject = new ImageView();
             counterWizard++;
-        }//---------------------------------
-    }
-
-
-
-
-
+        }
+    }//---------------------------------
 
 
 
@@ -315,6 +272,7 @@ public class Map1Controller implements Initializable {
             archer_queen.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\1687789713888.png", archerImageViewObject, archerQueen_img.getLayoutX(), archerQueen_img.getLayoutY()));
 
             Map1.root.getChildren().add(archer_queen);
+            draggedHero.add(archer_queen);
             // playGroundHeroesTA.add(ta_music);
 
             archerImageViewObject = new ImageView();
@@ -336,6 +294,7 @@ public class Map1Controller implements Initializable {
             barbarianKing2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\1687789713960.png", barbarianObject, barbarianKing_img.getLayoutX(), barbarianKing_img.getLayoutY()));
 
             Map1.root.getChildren().add(barbarianKing2);
+            draggedHero.add(barbarianKing2);
             // playGroundHeroesTA.add(ta_music);
 
             barbarianObject = new ImageView();
@@ -343,6 +302,7 @@ public class Map1Controller implements Initializable {
 
         }
     }
+
     //----------------------------------
     int counterGrand = 0;
     @FXML
@@ -355,6 +315,7 @@ public class Map1Controller implements Initializable {
             grandWarden2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\ikinh.png", grandObject, GrandWarden_img.getLayoutX(), GrandWarden_img.getLayoutY()));
 
             Map1.root.getChildren().add(grandWarden2);
+            draggedHero.add(grandWarden2);
             // playGroundHeroesTA.add(ta_music);
 
             grandObject = new ImageView();

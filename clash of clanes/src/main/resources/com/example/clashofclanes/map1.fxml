@@ -62,5 +62,10 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <ImageView fx:id="startGame_img" fitHeight="150.0" fitWidth="200.0" layoutX="153.0" layoutY="127.0" onMouseClicked="#click_Start" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@1353863_174122-OWFS90-837.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
