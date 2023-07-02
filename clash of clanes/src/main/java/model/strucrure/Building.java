@@ -53,4 +53,14 @@ public class Building extends ImageView {
     public void setImageView(ImageView imageView) {
         this.imageView = imageView;
     }
+    //-----------------------
+    String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

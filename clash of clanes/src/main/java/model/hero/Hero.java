@@ -12,6 +12,7 @@ public abstract class Hero extends ImageView
     private double health;
     private  ImageView imageView;
     private int radiosOfAttack;
+    private ImageView shotHer0Img;
     private double XOfHero;
     private double YOfHero;
 
@@ -56,6 +57,14 @@ public abstract class Hero extends ImageView
 
     public  void setImageView(ImageView imageView) {
         this.imageView = imageView;
+    }
+
+    public ImageView getShotHer0Img() {
+        return shotHer0Img;
+    }
+
+    public void setShotHer0Img(ImageView shotHer0Img) {
+        this.shotHer0Img = shotHer0Img;
     }
     //---------------------------
 

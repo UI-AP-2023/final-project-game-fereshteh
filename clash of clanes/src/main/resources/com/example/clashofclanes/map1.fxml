@@ -67,5 +67,10 @@
             <Image url="@1353863_174122-OWFS90-837.jpg" />
          </image>
       </ImageView>
+      <ImageView fx:id="shot_img" fitHeight="43.0" fitWidth="37.0" layoutX="517.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@tir3.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

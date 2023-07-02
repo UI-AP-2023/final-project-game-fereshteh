@@ -34,109 +34,126 @@ public class MapC {
 
     //------------------------------
     //------------------------------
-    private static MapC instance;
+//    private static MapC instance;
+//
+//    private MapC() {
+//
+//    }
+//
+//    public static MapC getInstance() {
+//        if (instance == null) {
+//            instance = new MapC() {
+//
+//            };
+//        }
+//        return instance;
+//    }
 
-    private MapC() {
-
-    }
-
-    public static MapC getInstance() {
-        if (instance == null) {
-            instance = new MapC() {
-
-            };
-        }
-        return instance;
-    }
+    int i = 0;
 
     //--------------------------------------
-    void initTimer() {
+    void initTimer() throws InterruptedException {
+        for (i = 0; i < heroes.size(); i++) {
+            ThreadController thread = new ThreadController();
+            thread.heroes=heroes;
+            thread.buildings=buildings;
+            thread.hero=heroes.get(i);
+            thread.attckbuilding=attckbuilding;
 
-        timer = new Timeline(
-                new KeyFrame(
-                        Duration.seconds(0.1),
-                        e -> startGame()
-
-                )
-        );
-        timer.setCycleCount(Animation.INDEFINITE);
-        timer.play();
-        System.out.println("timer start");
-
-    }
+            thread.username=heroes.get(i).getName();
+            System.out.println(" thread username ");
+            System.out.println(thread.username);
+            thread.start();
+           }
+            System.out.println("timer start");
+        }
 
     //--------------------------------------
     static Timeline timer;
 
-    public void GamePageController() {
+    public void GamePageController() throws InterruptedException {
         initTimer();
 
     }
 
     //-------------------
-    static double deltaX = 1000;
-    static double deltaY = 1000;
+    static double deltaX = 10000;
+    static double deltaY = 10000;
     static double speed;
     static boolean negativeX = false;
     static boolean negativeY = false;
 
-    public static void startGame() {
+    public  void startGame() {
         TranslateTransition tt = new TranslateTransition();
-      //  tt.setDelay(Duration.seconds(.01));
+        tt.setDuration(Duration.millis(1));
+        // tt.setDelay(Duration.seconds(.01));
+        System.out.println("instance hero size" +heroes.size());
+        System.out.println("instance buiding size " + buildings.size());
 
-        for (Hero hero : instance.heroes) {
+        for (Hero hero :heroes) {
 
-            for (Building building : instance.buildings) {
-                if (deltaX < Math.abs(hero.getLayoutX() - building.getLayoutX()) && deltaY < Math.abs(hero.getLayoutY() - building.getLayoutY())) {
-                    deltaX = Math.abs(hero.getLayoutX() - building.getLayoutX());
-                    deltaY = Math.abs(hero.getLayoutY() - building.getLayoutY());
-                    if ((hero.getLayoutX() - building.getLayoutX()) < 0) {
+            for (Building building : buildings) {
+                System.out.println("layoutX hero  " + hero.getImageView().getLayoutX());
+                System.out.println("layiutX bulding   " + building.getImageView().getLayoutX());
+                if (deltaX > Math.abs(hero.getImageView().getLayoutX() - building.getImageView().getLayoutX()) && deltaY > Math.abs(hero.getImageView().getLayoutY() - building.getImageView().getLayoutY())) {
+                    deltaX = Math.abs(hero.getImageView().getLayoutX() - building.getImageView().getLayoutX());
+                    deltaY = Math.abs(hero.getImageView().getLayoutY() - building.getImageView().getLayoutY());
+                    System.out.println("deltaX" + deltaX);
+                    System.out.println("deltaY" + deltaY);
+                    if ((hero.getImageView().getLayoutX() - building.getImageView().getLayoutX()) < 0) {
                         negativeX = true;
                     }
-                    if ((hero.getLayoutY() - building.getLayoutY()) < 0) {
+                    if ((hero.getImageView().getLayoutY() - building.getImageView().getLayoutY()) < 0) {
                         negativeY = true;
                     }
-                    while (!hero.Target(building)) {
 
-                        speed = hero.getSpeed();
-                        tt.setNode(hero);
-                        System.out.println("deltaX"+deltaX);
-                        System.out.println("deltaY"+deltaY);
-                        if (negativeX) {
-                            tt.setToX(-deltaX / speed);
-                            tt.play();
-                        } else {
-                            tt.setToX(deltaX / speed);
-                            tt.play();
-                        }
-                        if (negativeY) {
-                            tt.setToY(-deltaY / speed);
-                            tt.play();
-                        } else {
-                            tt.setToY(deltaY / speed);
-                            tt.play();
-                        }
+
+                    speed = hero.getSpeed();
+                    tt.setNode(hero.getImageView());
+                    double resultX;
+                    double resultY;
+
+//                    System.out.println(" while deltaY  " + deltaY);
+                    if (negativeX) {
+                        resultX = -deltaX;
+//                        System.out.println(" whilw deltaX  " + deltaX);
+                    } else {
+                        resultX = deltaX;
+
                     }
-                        while (hero.getHealth() > 0 && building.getHealth() > 0) {
-                            hero.setHealth(hero.getHealth() - building.getAttack_power());
-                            building.setHealth(hero.getHealth() - hero.getPower());
+                    if (negativeY) {
+                        resultY = -deltaY;
 
-
-                            if (hero.getHealth() <= 0) {
-
-
-                                Map1.root.getChildren().remove(hero.getImageView());
-                                // hero1.getImageView().setLayoutX(hero1.getImageView().getLayoutX() - (hero1.getSpeed() / 100));
-
-                            }
-                            if (building.getHealth() <= 0) {
-                                Map1.root.getChildren().remove(building.getImageView());
-                                //hero.getImageView().setLayoutX((hero.getImageView().getLayoutX() + (hero.getSpeed() / 100)));
-
-                            }
-                        }
+                    } else {
+                        resultY = deltaY;
                     }
+                    // while (Math.abs((hero.getImageView().getLayoutY() - building.getImageView().getLayoutY()) )>50 ||Math.abs(hero.getImageView().getLayoutX() - building.getImageView().getLayoutX())>50){
+                    System.out.println("new while");
+                    tt.setToX(resultX);
+                    tt.setToY(resultY);
+                    tt.play();
+
+
+//                        while (hero.getHealth() > 0 && building.getHealth() > 0) {
+//                            hero.setHealth(hero.getHealth() - building.getAttack_power());
+//                            building.setHealth(hero.getHealth() - hero.getPower());
+//
+//
+//                            if (hero.getHealth() <= 0) {
+//
+//
+//                                Map1.root.getChildren().remove(hero.getImageView());
+//                                // hero1.getImageView().setLayoutX(hero1.getImageView().getLayoutX() - (hero1.getSpeed() / 100));
+//
+//                            }
+//                            if (building.getHealth() <= 0) {
+//                                Map1.root.getChildren().remove(building.getImageView());
+//                                //hero.getImageView().setLayoutX((hero.getImageView().getLayoutX() + (hero.getSpeed() / 100)));
+//
+//                            }
+//                        }
                 }
+            }
 //                    if (hero.getImageView().getLayoutX() < 750) {
 //                        hero.getImageView().setLayoutX((hero.getImageView().getLayoutX() + (hero.getSpeed() / 100)));
 //                    }
@@ -158,11 +175,81 @@ public class MapC {
 //                    }
 
 
-            }
-
         }
 
+
     }
+
+    //--------------------------
+    public Building attckbuilding;
+     Hero attackhero;
+
+    public  void startGameTaki(Hero hero) {
+        TranslateTransition tt = new TranslateTransition();
+        tt.setDuration(Duration.millis(3000));
+        // tt.setDelay(Duration.seconds(.01));
+        System.out.println("instance hero size" + heroes.size());
+        System.out.println("instance buiding size " + buildings.size());
+
+
+        for (Building building : buildings) {
+            System.out.println("layoutX hero  " + hero.getImageView().getLayoutX());
+            System.out.println("layiutX bulding   " + building.getImageView().getLayoutX());
+            if (deltaX > Math.abs(hero.getImageView().getLayoutX() - building.getImageView().getLayoutX()) && deltaY > Math.abs(hero.getImageView().getLayoutY() - building.getImageView().getLayoutY())) {
+                deltaX = Math.abs(hero.getImageView().getLayoutX() - building.getImageView().getLayoutX());
+                deltaY = Math.abs(hero.getImageView().getLayoutY() - building.getImageView().getLayoutY());
+                attckbuilding = building;
+                attackhero = hero;
+                System.out.println("deltaX" + deltaX);
+                System.out.println("deltaY" + deltaY);
+                if ((hero.getImageView().getLayoutX() - building.getImageView().getLayoutX()) < 0) {
+                    negativeX = true;
+                }
+                if ((hero.getImageView().getLayoutY() - building.getImageView().getLayoutY()) < 0) {
+                    negativeY = true;
+                }
+            }
+        }
+
+        speed = hero.getSpeed();
+        tt.setNode(hero.getImageView());
+        double resultX;
+        double resultY;
+
+//                    System.out.println(" while deltaY  " + deltaY);
+        if (negativeX) {
+            resultX = deltaX;
+//                        System.out.println(" whilw deltaX  " + deltaX);
+        } else {
+            resultX = -deltaX;
+
+        }
+        if (negativeY) {
+            resultY = deltaY;
+
+        } else {
+            resultY = -deltaY;
+        }
+        // while (Math.abs((hero.getImageView().getLayoutY() - attckbuilding.getImageView().getLayoutY()) )>50 ||Math.abs(hero.getImageView().getLayoutX() - attckbuilding.getImageView().getLayoutX())>50) {
+        System.out.println("new while");
+        tt.setToX(resultX);
+        tt.setToY(resultY);
+        tt.play();
+        // }}
+    }
+
+    public boolean target(Hero hero) {
+
+
+        if (Math.abs((hero.getImageView().getLayoutY() - attckbuilding.getImageView().getLayoutY())) > 50 || Math.abs(hero.getImageView().getLayoutX() - attckbuilding.getImageView().getLayoutX()) > 50) {
+            return false;
+
+        }
+        return true;
+    }
+}
+
+
 
 
 

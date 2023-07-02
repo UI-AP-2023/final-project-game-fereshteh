@@ -33,34 +33,6 @@ public class Map1 extends Application {
     }
 
 
-
-
-
-
-
-
-
-
-
-//    public void method(){
-//        dragHeroes();
-//        initTimer();
-//    }
-    //----------------------
-
-
-//    void dragHeroes(Hero hero) {
-//        hero =new Hero(hero.getPower(),hero.getSpeed(),hero.getHealth(),hero.getImageView(),hero.getRadiosOfAttack()) {
-//
-//
-//            @Override
-//            public boolean Target(Building building) {
-//                return false;
-//            }
-//        }
-//        };
-//    }
-
 //    void updateGame() {
 //        for (Hero hero : Map1Controller.getHeroes()) {
 //            for (Building building : Map1Controller.getBuildings()) {
