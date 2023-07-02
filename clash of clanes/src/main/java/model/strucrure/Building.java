@@ -2,7 +2,7 @@ package model.strucrure;
 
 import javafx.scene.image.ImageView;
 
-public class Building extends ImageView {
+public  class Building extends ImageView {
     private String type;
     private double health;
     private double Attack_power;

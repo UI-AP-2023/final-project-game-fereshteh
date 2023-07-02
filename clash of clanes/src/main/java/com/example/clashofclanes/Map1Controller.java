@@ -65,6 +65,7 @@ public class Map1Controller implements Initializable {
     private static ArrayList<Building> buildings = new ArrayList<>();
     private static ArrayList<Hero> heroes = new ArrayList<>();
     private static ArrayList<ImageView>shotImages=new ArrayList<>();
+    private static ArrayList<Double>locations=new ArrayList<>();
     //-------------------------------
 
 
@@ -173,6 +174,11 @@ public class Map1Controller implements Initializable {
         Map1.root.getChildren().add(archerBuilding);
         Map1.root.getChildren().add(canoonBuilding);
         attackBuilding=firstBlackWall;
+        for(int i=0;i<buildings.size();i++){
+            locations.add(buildings.get(i).getImageView().getLayoutX());
+            locations.add(buildings.get(i).getImageView().getLayoutY());
+        }
+        ThreadController.locations=locations;
         //------------------------
         System.out.println("building size"+buildings.size());
        // firstBlackWall.getImageView().setX(blackWall_img.getX());
