@@ -33,18 +33,6 @@ public class Map1 extends Application {
     }
 
 
-//    void updateGame() {
-//        for (Hero hero : Map1Controller.getHeroes()) {
-//            for (Building building : Map1Controller.getBuildings()) {
-//                if (hero.Target(building)) {
-//                    new Thread(
-//
-//                    );
-//                } else {
-//                    hero.setTranslateX(hero.getTranslateX() + 1);
-//                }
-//            }
-//        }
-//    }
+
 
 }

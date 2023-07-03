@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="pane" prefHeight="746.0" prefWidth="1171.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clashofclanes.Map1Controller">
    <children>
-      <ImageView fx:id="backgorond" fitHeight="786.0" fitWidth="1182.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="backgorond" fitHeight="786.0" fitWidth="1182.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Map_Books_of_Clash_Scenery2.jpg" />
          </image>
@@ -67,9 +67,24 @@
             <Image url="@1353863_174122-OWFS90-837.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="shot_img" fitHeight="43.0" fitWidth="37.0" layoutX="517.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="shot_img" fitHeight="28.0" fitWidth="21.0" layoutX="533.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@tir3.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tirArcher_img" fitHeight="29.0" fitWidth="86.0" layoutX="414.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@tirArcher.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tirGarden_img" fitHeight="39.0" fitWidth="33.0" layoutX="492.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@1688034447296gcvg.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tirBarbarian_img" fitHeight="50.0" fitWidth="50.0" layoutX="697.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@16880344472962nuj.png" />
          </image>
       </ImageView>
    </children>

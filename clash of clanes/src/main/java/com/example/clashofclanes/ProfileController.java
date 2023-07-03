@@ -562,6 +562,7 @@ public class ProfileController implements Initializable {
     private static int indexOfAttack;
     private ArrayList<Hero> heroes = new ArrayList<>();
 
+
     //-----------------------------------
 
 
