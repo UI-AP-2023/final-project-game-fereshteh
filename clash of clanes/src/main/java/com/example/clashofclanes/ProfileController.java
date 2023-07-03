@@ -1,5 +1,6 @@
 package com.example.clashofclanes;
 
+import detaBase.PlayersConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -298,6 +299,32 @@ public class ProfileController implements Initializable {
 
     @FXML
     private AnchorPane map_pane2;
+    @FXML
+    private static Label result_lbl;
+    private  static String win;
+
+    public static String getWin() {
+        return win;
+    }
+
+    public static void setWin(String win) {
+        ProfileController.win = win;
+        setTextWin(win);
+    }
+
+    public  static void setTextWin(String win) {
+        Label result=new Label(win);
+        Map1.root.getChildren().add(result);
+        ProfileController.win = win;
+        result.setText(win);
+        result.setLayoutX(116);
+        result.setLayoutY(155);
+        result.setVisible(true);
+    }
+//    public static void setVisibleWinLabl(String text){
+//        result_lbl.setText(text);
+//        result_lbl.setVisible(true);
+//    }
 
     @FXML
     private ImageView map2_img;
@@ -529,6 +556,14 @@ public class ProfileController implements Initializable {
             check--;
         }
     }
+    public static void addFailure(){
+        PlayersConnection.getInstance().updateFailure(RegisterController.getUsername(),RegisterController.getFailure()+1);
+    }
+    public static void addSuccess(){
+        RegisterController.setSucsses(RegisterController.getSucsses()+1);
+        PlayersConnection.getInstance().updateSuccess(LoginController.getUsername(),RegisterController.getSucsses());
+    }
+
 
     //-------------------------------------
     @FXML
@@ -540,6 +575,8 @@ public class ProfileController implements Initializable {
     //----------------------------------------
     @FXML
     public void signOut(MouseEvent event) throws IOException {
+        RegisterController.setUsername("");
+        RegisterController.setPassword("");
         new Login().start((Stage) signOut_btn.getScene().getWindow());
     }
 
@@ -548,7 +585,16 @@ public class ProfileController implements Initializable {
     public void showUsername(MouseEvent event) {
         username_lbl.setText(ProfileController.username);
     }
-
+    @FXML
+    public void showFailure(MouseEvent event){
+        addFailure();
+        failure2_lbl.setText(String.valueOf(PlayersConnection.getInstance().getFailure(username)));
+    }
+    @FXML
+    public void showSucsses(MouseEvent event){
+        addSuccess();
+        win2_lbl.setText(String.valueOf(PlayersConnection.getInstance().getSucsses(username)));
+    }
     //-------------------------------------------
     @FXML
     public void showPassword(MouseEvent event) {

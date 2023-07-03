@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="621.0" prefWidth="931.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clashofclanes.ProfileController">
    <children>
@@ -28,8 +29,8 @@
                   <Image url="@16880344472962.png" />
                </image>
             </ImageView>
-            <Label fx:id="win1_lbl" layoutX="46.0" layoutY="160.0" text="WINS" textFill="#f2e20b" />
-            <Label fx:id="failure1_lbl" alignment="CENTER" layoutX="177.0" layoutY="160.0" prefHeight="21.0" prefWidth="75.0" text="FAILURES" textAlignment="RIGHT" textFill="#f2e20b" />
+            <Label fx:id="win1_lbl" layoutX="46.0" layoutY="160.0" onMouseClicked="#showSucsses" text="WINS" textFill="#f2e20b" />
+            <Label fx:id="failure1_lbl" alignment="CENTER" layoutX="177.0" layoutY="160.0" onMouseClicked="#showFailure" prefHeight="21.0" prefWidth="75.0" text="FAILURES" textAlignment="RIGHT" textFill="#f2e20b" />
             <Label fx:id="win2_lbl" layoutX="48.0" layoutY="185.0" text="Label" textFill="#f2e20b" />
             <Label fx:id="failure2_lbl" layoutX="197.0" layoutY="185.0" text="Label" textFill="#f2e20b" />
             <Label fx:id="level1_lbl" layoutX="95.0" layoutY="230.0" text="LEVEL" textFill="#f2e20b" />
@@ -467,5 +468,10 @@
          </children>
       </AnchorPane>
       <Button fx:id="attack_btn" layoutX="634.0" layoutY="143.0" mnemonicParsing="false" onMouseClicked="#showMaps" prefHeight="45.0" prefWidth="106.0" style="-fx-background-color: #2f2e2d; -fx-background-radius: 30;" text="ATTACK" textFill="#32f00c" />
+      <Label fx:id="result_lbl" alignment="CENTER" layoutX="116.0" layoutY="155.0" prefHeight="21.0" prefWidth="302.0" text="WIN" visible="false" AnchorPane.bottomAnchor="431.0" AnchorPane.leftAnchor="116.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

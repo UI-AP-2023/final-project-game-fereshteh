@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="pane" prefHeight="746.0" prefWidth="1171.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clashofclanes.Map1Controller">
    <children>
-      <ImageView fx:id="backgorond" fitHeight="786.0" fitWidth="1182.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="backgorond" fitHeight="786.0" fitWidth="1182.0" onMouseClicked="#setWinWon" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Map_Books_of_Clash_Scenery2.jpg" />
          </image>
@@ -87,5 +89,23 @@
             <Image url="@16880344472962nuj.png" />
          </image>
       </ImageView>
+      <Label fx:id="win_lbl" alignment="CENTER" layoutX="445.0" layoutY="140.0" prefHeight="21.0" prefWidth="292.0" text="Win" textFill="#c90b0b" visible="false">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="tirBlueWall_img" fitHeight="51.0" fitWidth="42.0" layoutX="579.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@tirArcher.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tirCanoon_img" fitHeight="29.0" fitWidth="42.0" layoutX="776.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@1688034447296ii.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lableWin2" layoutX="186.0" layoutY="46.0" text="Label" visible="false" />
+      <Label fx:id="lablWin3" text="Label" visible="false" />
+      <Label fx:id="lableWin4" text="Label" visible="false" />
    </children>
 </AnchorPane>

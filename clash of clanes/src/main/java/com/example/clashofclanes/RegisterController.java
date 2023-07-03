@@ -43,6 +43,8 @@ public class RegisterController implements Initializable {
    private static String username;
   private  static String password;
   private  static int indexMap;
+  private static int failure;
+  private static int sucsses;
   //----------------------------
 
     public ImageView getBackGround_img() {
@@ -77,6 +79,21 @@ public class RegisterController implements Initializable {
         RegisterController.indexMap = indexMap;
     }
 
+    public static int getFailure() {
+        return failure;
+    }
+
+    public static void setFailure(int failure) {
+        RegisterController.failure = failure;
+    }
+
+    public static int getSucsses() {
+        return sucsses;
+    }
+
+    public static void setSucsses(int sucsses) {
+        RegisterController.sucsses = sucsses;
+    }
     //--------------------------
 
     @Override
@@ -92,4 +109,5 @@ public class RegisterController implements Initializable {
     public void check(MouseEvent event)throws Exception{
 
     }
+
 }

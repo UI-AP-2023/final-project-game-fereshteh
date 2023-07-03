@@ -66,6 +66,49 @@ public class PlayersConnection {
             throw new RuntimeException(e);
         }
     }
+    //-------------------------------------------------------
+    public int getFailure(String username) {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db", "server", "1234");
+
+            String SQLCom = String.format("SELECT `failure` FROM `players` WHERE (username ='%s')", username);
+            Statement s = connection.prepareStatement(SQLCom);
+            ResultSet resultSet = s.executeQuery(SQLCom);
+            int password = 0;
+            while (resultSet.next()) {
+                password = Integer.parseInt(resultSet.getString("failure"));
+            }
+
+            connection.close();
+
+            return password;
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public int getSucsses(String username) {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db", "server", "1234");
+
+            String SQLCom = String.format("SELECT `success` FROM `players` WHERE (username ='%s')", username);
+            Statement s = connection.prepareStatement(SQLCom);
+            ResultSet resultSet = s.executeQuery(SQLCom);
+            int password = 0;
+            while (resultSet.next()) {
+                password = Integer.parseInt(resultSet.getString("success"));
+            }
+
+            connection.close();
+
+            return password;
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     //-----------------------------------------------------------------
     public void savePlayer(String username, String password, int map, int level) {
@@ -107,6 +150,37 @@ public class PlayersConnection {
             throw new RuntimeException(e);
         }
     }
+    public void updateFailure(String username,int failure) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db", "server", "1234");
+
+            String SQLCom = String.format("UPDATE players SET (failure='%d')WHERE (username ='%s')", failure,username);
+            Statement s = connection.prepareStatement(SQLCom);
+            s.execute(SQLCom);
+
+            connection.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    //-------------------------------------------------------------
+    public void updateSuccess(String username,int success) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db", "server", "1234");
+
+            String SQLCom = String.format("UPDATE players SET success=%d WHERE username =%s", success,username);
+            Statement s = connection.prepareStatement(SQLCom);
+           s.execute(SQLCom);
+           // ArrayList<String> users = new ArrayList<>();
+
+            connection.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
     //------------------------------
 

@@ -1,5 +1,6 @@
 package controller;
 
+import com.example.clashofclanes.ProfileController;
 import detaBase.PlayersConnection;
 
 import java.util.ArrayList;
@@ -24,9 +25,12 @@ public class LoginC {
         ArrayList<String> allUserNames= PlayersConnection.getInstance().showUserName();
         for (int i=0;i<allUserNames.size();i++){
             if(username.equals(allUserNames.get(i))){
-                if(PlayersConnection.getInstance().getPassword(username).equals(password))
+                if(PlayersConnection.getInstance().getPassword(username).equals(password)){
+                    ProfileController.setUsername(username);
+                    ProfileController.setPassword(password);
+
                     return true;
-            }
+            }}
         }
    return false; }
     //------------------------------------------

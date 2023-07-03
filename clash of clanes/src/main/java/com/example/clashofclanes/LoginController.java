@@ -43,6 +43,24 @@ public class LoginController implements Initializable {
 
     @FXML
     private Button login_btn;
+    private static   String username;
+    private static String password;
+
+    public static String getUsername() {
+        return username;
+    }
+
+    public static void setUsername(String username) {
+        LoginController.username = username;
+    }
+
+    public static String getPassword() {
+        return password;
+    }
+
+    public static void setPassword(String password) {
+        LoginController.password = password;
+    }
 
     //-----------------------
     Player player;
@@ -53,12 +71,16 @@ public class LoginController implements Initializable {
     @FXML
     public void login(MouseEvent event) throws Exception {
        if( LoginC.getInstance().check(userName_txtField.getText(),password_txtField.getText())){
-           new AllMap().start((Stage) register_btn.getScene().getWindow());
+
+           new Profile().start((Stage) login_btn.getScene().getWindow());
        }
        else {
            Alert alert = new Alert(Alert.AlertType.ERROR);
            alert.setContentText("wrong info");
            alert.show();
        }
+       RegisterController.setUsername(username);
+       RegisterController.setPassword(password);
+
     }
 }

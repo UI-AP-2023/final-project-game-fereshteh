@@ -5,17 +5,20 @@ import controller.ThreadController;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.hero.*;
 import model.strucrure.*;
 import model.strucrure.Map;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -34,6 +37,11 @@ public class Map1Controller implements Initializable {
 
     @FXML
     private ImageView tirBarbarian_img;
+    @FXML
+    private ImageView tirBlueWall_img;
+
+    @FXML
+    private ImageView tirCanoon_img;
     Building attackBuilding;
 
     @FXML
@@ -41,12 +49,24 @@ public class Map1Controller implements Initializable {
 
     @FXML
     private ImageView blackWall2_img;
+    @FXML
+    private Label lableWin2;
+
+    @FXML
+    private Label lablWin3;
+
+    @FXML
+    private Label lableWin4;
+
 
     @FXML
     private ImageView blueBuliding_image;
 
     @FXML
     private ImageView canoonBuliding_img;
+
+    @FXML
+    private static Label win_lbl;
 
     @FXML
     private ImageView archerBuilding_img;
@@ -100,6 +120,12 @@ public class Map1Controller implements Initializable {
     public static void setBuildings(ArrayList<Building> buildings) {
         Map1Controller.buildings = buildings;
     }
+    public static void removeBuilding(Building building){
+        buildings.remove(building);
+    }
+    public static void removeHero(Hero hero){
+        heroes.remove(hero);
+    }
 
     //------------------------------
     Wizard wizard;
@@ -110,14 +136,14 @@ public class Map1Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Map map = new Map(buildings, 20, backgorond);
-        wizard=new Wizard(5,3,20,Wizard_img,20);
-        grandWarden=new Grand_Warden(5,10,10,GrandWarden_img,5);
-        barbarianKing=new Barbarian_King(5,20,5,barbarianKing_img,5);
-        archerQueen=new Archer_Queen(5,20,15,archerQueen_img,5);
-        heroes.add(wizard);
-        heroes.add(grandWarden);
-        heroes.add(barbarianKing);
-        heroes.add(archerQueen);
+//        wizard=new Wizard(5,10,25,Wizard_img,20);
+//        grandWarden=new Grand_Warden(5,5,30,GrandWarden_img,5);
+//        barbarianKing=new Barbarian_King(5,3,20,barbarianKing_img,5);
+//        archerQueen=new Archer_Queen(5,7,15,archerQueen_img,5);
+//        heroes.add(wizard);
+//        heroes.add(grandWarden);
+//        heroes.add(barbarianKing);
+//        heroes.add(archerQueen);
 
         Map1.root.getChildren().add(map);
 
@@ -154,6 +180,22 @@ public class Map1Controller implements Initializable {
         tt.setToZ(-200);
         tt.play();
         numberOfHeros();
+        //-----------------------------
+        TranslateTransition buildingShot = new TranslateTransition(Duration.millis(500));
+        buildingShot.setNode(tirCanoon_img);
+        buildingShot.setByX(100);
+        buildingShot.setByY(100);
+        buildingShot.setAutoReverse(true);
+        buildingShot.setCycleCount(50);
+        buildingShot.play();
+        //-------------------------------
+        TranslateTransition archerBuildingShot = new TranslateTransition(Duration.millis(500));
+        archerBuildingShot.setNode(tirBlueWall_img);
+        archerBuildingShot.setByX(100);
+        archerBuildingShot.setByY(100);
+        archerBuildingShot.setAutoReverse(true);
+        archerBuildingShot.setCycleCount(50);
+        archerBuildingShot.play();
 
     }
 
@@ -205,6 +247,15 @@ public class Map1Controller implements Initializable {
         rotate.setNode(firstBlackWall.getImageView());
         rotate.play();
 
+        RotateTransition secondTT=new RotateTransition();
+        secondTT.setAxis(Rotate.Z_AXIS);
+        secondTT.setByAngle(180);
+        secondTT.setCycleCount(20);
+        secondTT.setDuration(Duration.millis(1000));
+        secondTT.setAutoReverse(true);
+        secondTT.setNode(secondBlackWall.getImageView());
+        secondTT.play();
+
 
 
 //        System.out.println("first black class x");
@@ -217,6 +268,21 @@ public class Map1Controller implements Initializable {
 //        System.out.println(secondBlackWall.getImageView().getLayoutX());
 //        System.out.println("blue x");
 //        System.out.println(firstBlueWall.getImageView().getLayoutX());
+
+    }
+
+    public void setAttackBuilding(Building building){
+        if(building.getAttack_power()>0){
+            RotateTransition secondTT=new RotateTransition();
+            secondTT.setAxis(Rotate.Z_AXIS);
+            secondTT.setByAngle(180);
+            secondTT.setCycleCount(20);
+            secondTT.setDuration(Duration.millis(1000));
+            secondTT.setAutoReverse(true);
+            secondTT.setNode(building.getImageView());
+            secondTT.play();
+        }
+
     }
 
     //------------------------------------------
@@ -444,6 +510,29 @@ public class Map1Controller implements Initializable {
         }
     }
     //-------------------------------------
+    private static boolean win;
+
+    public static boolean isWin() {
+        return win;
+    }
+
+    public static void setWin(boolean win) {
+        Map1Controller.win = win;
+    }
+
+    @FXML
+    public   void setWinWon(MouseEvent event) throws IOException {
+        if(win){
+
+
+        ProfileController.setWin("you Win");}
+        else {
+            ProfileController.setWin("you faild");
+        }
+            new Profile().start((Stage) backgorond.getScene().getWindow());
+
+    }
+
 
 
 
