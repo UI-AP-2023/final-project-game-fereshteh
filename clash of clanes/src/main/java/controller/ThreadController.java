@@ -51,17 +51,19 @@ public class ThreadController extends Thread {
 
     //-----------------
 
+    boolean isContourne = true;
 
-        @Override
+    @Override
     public void run() {
-        nearBuilding(hero);
+            nearBuilding(hero);
             try {
                 walk(hero);
                 attack();
             } catch (InterruptedException | IOException e) {
                 throw new RuntimeException(e);
             }
-        }
+
+    }
 //    @Override
 //    public void run() {
 //        nearBuilding(hero);
@@ -76,14 +78,52 @@ public class ThreadController extends Thread {
 
     Building attckbuilding;
 
-    public void walk(Hero hero) throws InterruptedException {
+    public void walk(Hero hero)   {
+        TranslateTransition tt = new TranslateTransition();
+        tt.setDuration(Duration.millis(4000));
+        if (Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2)) > Math.sqrt(Math.pow(hero.getImageView().getLayoutX() - attckbuilding.getImageView().getLayoutX(), 2) + Math.pow(hero.getImageView().getLayoutY() - attckbuilding.getImageView().getLayoutY(), 2))) {
+            deltaX = Math.abs(hero.getImageView().getLayoutX() - attckbuilding.getImageView().getLayoutX());
+            deltaY = Math.abs(hero.getImageView().getLayoutY() - attckbuilding.getImageView().getLayoutY());
+//            System.out.println("deltaX" + deltaX);
+//            System.out.println("deltaY" + deltaY);
+            if ((hero.getImageView().getLayoutX() - attckbuilding.getImageView().getLayoutX()) < 0) {
+                negativeX = true;
+            }
+            if ((hero.getImageView().getLayoutY() - attckbuilding.getImageView().getLayoutY()) < 0) {
+                negativeY = true;
+            }
+        }
+        tt.setNode(hero.getImageView());
+        double resultX;
+        double resultY;
+        if (negativeX) {
+            resultX = deltaX;
+        } else {
+            resultX = -deltaX;
+        }
+        if (negativeY) {
+            resultY = deltaY;
+        } else {
+            resultY = -deltaY;
+        }
+        tt.setToX(resultX);
+        tt.setToY(resultY);
+        tt.play();
 
-        // tt.setDuration(Duration.millis(1000));
-        // tt.setDelay(Duration.seconds(4));
-        if (Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2)) > Math.sqrt(Math.pow(hero.getImageView().getLayoutX() - attckbuilding.getImageView().getLayoutX(), 2) + Math.pow(hero.getImageView().getLayoutY() -
-                attckbuilding.getImageView().getLayoutY(), 2))) {
-            deltaX = Math.abs(hero.getImageView().getLayoutX() - attckbuilding.getImageView().getLayoutX()) - 25;
-            deltaY = Math.abs(hero.getImageView().getLayoutY() - attckbuilding.getImageView().getLayoutY()) - 25;
+       try {
+           sleep(3000);
+       }catch (InterruptedException z){
+           z.printStackTrace();
+       }
+        //System.out.println(hero.getName() + "برخورد");
+    }
+
+    public void walk2(Hero hero) {
+        TranslateTransition tt = new TranslateTransition();
+        tt.setDuration(Duration.millis(4000));
+        if (Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2)) > Math.sqrt(Math.pow(hero.getImageView().getLayoutX() - attckbuilding.getImageView().getLayoutX(), 2) + Math.pow(hero.getImageView().getLayoutY() - attckbuilding.getImageView().getLayoutY(), 2))) {
+            deltaX = Math.abs(hero.getImageView().getLayoutX() - attckbuilding.getImageView().getLayoutX());
+            deltaY = Math.abs(hero.getImageView().getLayoutY() - attckbuilding.getImageView().getLayoutY());
 
             if ((hero.getImageView().getLayoutX() - attckbuilding.getImageView().getLayoutX()) < 0) {
                 negativeX = true;
@@ -105,45 +145,12 @@ public class ThreadController extends Thread {
         } else {
             resultY = -deltaY;
         }
-//        tt.setToX(resultX);
-//        tt.setToY(resultY);
-//        tt.play();
+        tt.setToX(resultX);
+        tt.setToY(resultY);
+        tt.play();
 
-        int sumX = (int) (resultX / hero.getSpeed());
-        int sumY = (int) (resultY / hero.getSpeed());
-        boolean target = true;
-        while (!boundTarget()) {
-            tt.setDelay(Duration.millis(1000));
-          //  Thread.sleep(1000);
-            if (resultX > 0) {
-                if (Math.abs(sumX) < Math.abs(resultX)) {
-
-                    tt.setToX(sumX);
-                    sumX += sumX;
-                }
-
-            }
-            //  tt.setDelay(Duration.millis(500));
-            if (resultX < 0) {
-                tt.setToX(sumX);
-                sumX -= sumX;
-            }
-            if (resultY > 0) {
-                tt.setToY(sumY);
-                sumY += sumY;
-            } else if (resultY < 0) {
-                tt.setToY(sumY);
-                sumY -= sumY;
-            }
-            if(Math.abs(sumX)-Math.abs(resultX)<=10&& Math.abs(sumY)-Math.abs(resultY)<=10){
-                target=false;
-            }
-
-            tt.play();
-
-        }
-       // tt.stop();
-        System.out.println(hero.getName() + "برخورد");
+       // System.out.println(hero.getName() + "برخورد 2 ");
+        isContourne = false;
     }
 
     public boolean boundTarget() {
@@ -168,34 +175,25 @@ public class ThreadController extends Thread {
             return true;
         }
         //------------------------------------
-//        if (Math.abs(hero.getImageView().getBoundsInParent().getMaxX() - attckbuilding.getImageView().getBoundsInParent().getMinX())<=10) {
-//
-//            return true;
-//        }
-//        if (Math.abs(hero.getImageView().getBoundsInParent().getMinY() - attckbuilding.getImageView().getBoundsInParent().getMaxY())<=10) {
-//            return true;
-//        }
-//        if (Math.abs(hero.getImageView().getBoundsInParent().getMinX() - attckbuilding.getImageView().getBoundsInParent().getMaxX())<=10) {
-//            return true;
-//        }
-//        if (Math.abs(hero.getImageView().getBoundsInParent().getMaxY() - attckbuilding.getImageView().getBoundsInParent().getMinY())<=10) {
-//            return true;
-//        }
+
         return false;
     }
 
     //---------------------
     public void nearBuilding(Hero hero) {
-        if(buildings.size()!=0){
-        for (Building building : buildings) {
-            if (Math.sqrt(Math.pow(hero.getImageView().getLayoutY() - deltaY, 2) + Math.pow(hero.getImageView().getLayoutX() - deltaX, 2)) > Math.sqrt(Math.pow(Math.abs(hero.getImageView().getLayoutX() - building.getImageView().getLayoutX()), 2) + Math.pow(Math.abs(hero.getImageView().getLayoutY() - building.getImageView().getLayoutY()), 2))) {
-                if (building.isVisible()) {
-                    deltaX = Math.abs(building.getImageView().getLayoutX());
-                    deltaY = Math.abs(building.getImageView().getLayoutY());
-                    attckbuilding = building;
+        if (buildings.size() != 0) {
+            for (Building building : buildings) {
+                if (Math.sqrt(Math.pow(hero.getImageView().getLayoutY() - deltaY, 2) + Math.pow(hero.getImageView().getLayoutX() - deltaX, 2)) > Math.sqrt(Math.pow(Math.abs(hero.getImageView().getLayoutX() - building.getImageView().getLayoutX()), 2) + Math.pow(Math.abs(hero.getImageView().getLayoutY() - building.getImageView().getLayoutY()), 2))) {
+                    if (building.isVisible()) {
+                        deltaX = Math.abs(building.getImageView().getLayoutX());
+                        deltaY = Math.abs(building.getImageView().getLayoutY());
+                        attckbuilding = building;
+                    } else {
+                        continue;
+                    }
                 }
             }
-        }}
+        }
 
     }
 
@@ -206,9 +204,9 @@ public class ThreadController extends Thread {
         int numberOfDiedHero = 0;
         boolean win = false;
         while (contourne) {
-            if (hero.getHealth() > 0 || attckbuilding.getHealth() > 0) {
+            if (hero.getHealth() > 0 && attckbuilding.getHealth() > 0) {
                 shot(hero);
-               // hero.getShotHer0Img().setVisible(true);
+                // hero.getShotHer0Img().setVisible(true);
                 System.out.println("username :   " + hero.getName() + "health  :   " + hero.getHealth() + " before Attack");
                 hero.setHealth(hero.getHealth() - attckbuilding.getAttack_power());
                 System.out.println("building name  " + attckbuilding.getName() + "health  :  " + attckbuilding.getHealth() + "  before attack ");
@@ -218,7 +216,8 @@ public class ThreadController extends Thread {
                 System.out.println("username :   " + hero.getName() + "health  :   " + hero.getHealth() + " After Attack");
                 System.out.println("building name  " + attckbuilding.getName() + "health  :  " + attckbuilding.getHealth() + "  after attack ");
                 //  hero.getShotHer0Img().setVisible(true);
-                tt.setDelay(Duration.millis(1000));
+                //tt.setDelay(Duration.millis(1000));
+                sleep(2000);
             }
             if (hero.getHealth() <= 0) {
                 hero.getImageView().setVisible(false);
@@ -226,17 +225,22 @@ public class ThreadController extends Thread {
                 Map1Controller.removeHero(hero);
             }
             if (attckbuilding.getHealth() <= 0) {
+                //***********
+                nearBuilding(hero);
+                //System.out.println("second walk");
+                walk2(hero);
+                isContourne = false;
                 attckbuilding.getImageView().setVisible(false);
-                if (attckbuilding instanceof ArcherBuilding ){
+
+
+                if (attckbuilding instanceof ArcherBuilding) {
                     ((ArcherBuilding) attckbuilding).getShot().setVisible(false);
-                }
-                else if(attckbuilding instanceof CanoonBuilding){
+                } else if (attckbuilding instanceof CanoonBuilding) {
                     ((CanoonBuilding) attckbuilding).getShot().setVisible(false);
                 }
 
-
             }
-            if (!attckbuilding.getImageView().isVisible()&& buildings.size()>0 ) {
+            if (!attckbuilding.getImageView().isVisible() && buildings.size() > 0) {
                 nearBuilding(hero);
             }
             if (Map1Controller.getHeroes().size() == 0 || Map1Controller.getBuildings().size() == 0) {
@@ -244,45 +248,34 @@ public class ThreadController extends Thread {
                 if (Map1Controller.getHeroes().size() == 0) {
                     Map1Controller.setWin(false);
 
-//                    if(attckbuilding instanceof CanoonBuilding){
-//
-//                    }
-//                    else if(attckbuilding instanceof BlueWall){
-//
-//                    }
-//                    else if(attckbuilding instanceof BlackWall){
-//
-//                    }
-//                    else if(attckbuilding instanceof ArcherBuilding){
-//
-//                    }
-                    // MapC.attackConnection(ProfileController.getIndexOfAttack(), win);
                     contourne = false;
                     break;
                 } else {
                     Map1Controller.setWin(true);
-                     MapC.attackConnection(ProfileController.getIndexOfAttack(), win);
+                    MapC.attackConnection(ProfileController.getIndexOfAttack(), win);
                     contourne = false;
                     break;
                 }
             }
-     // Thread.sleep(2000);  }
-    }}
+            // Thread.sleep(2000);  }
+            sleep(4000);
+        }
+    }
 
     //---------------------------
 //    @FXML
     void shot(Hero hero) {
-        tt.setDelay(Duration.millis(3000));
+
         TranslateTransition tt = new TranslateTransition();
-       // tt.setDuration(Duration.millis(2000));
-        tt.setDelay(Duration.millis(500));
-        if(hero instanceof Archer_Queen){
-        hero.getShotHer0Img().setVisible(true);}
+
+        if (hero instanceof Archer_Queen) {
+            hero.getShotHer0Img().setVisible(true);
+        }
         tt.setNode(hero.getShotHer0Img());
-        tt.setToX(attckbuilding.getImageView().getBoundsInParent().getCenterX());
-        tt.setToY(attckbuilding.getImageView().getBoundsInParent().getCenterY());
+        tt.setToX(attckbuilding.getImageView().getLayoutX());
+        tt.setToY(attckbuilding.getImageView().getLayoutY());
         tt.setAutoReverse(true);
-        tt.setCycleCount(10);
+        tt.setCycleCount(40);
         tt.play();
     }
 }

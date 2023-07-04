@@ -18,7 +18,7 @@ import java.util.Random;
 public class MapC {
     private ArrayList<Building> buildings;
     private ArrayList<Hero> heroes;
-    private  static ArrayList<Player> players = new ArrayList<>();
+    private static ArrayList<Player> players = new ArrayList<>();
 
     public ArrayList<Building> getBuildings() {
         return buildings;
@@ -36,6 +36,10 @@ public class MapC {
         this.heroes = heroes;
     }
 
+    public static void addPlayer(Player player) {
+        players.add(player);
+    }
+
     //------------------------------
     //------------------------------
 
@@ -43,18 +47,21 @@ public class MapC {
     int i = 0;
 
     //--------------------------------------
-    void initTimer() throws InterruptedException {
+    void initTimer()  {
+        ThreadController thread;
         for (i = 0; i < heroes.size(); i++) {
-            ThreadController thread = new ThreadController();
+            thread = new ThreadController();
+
 
             thread.setBuildings(buildings);
             thread.setHero(heroes.get(i));
             thread.attckbuilding = attckbuilding;
 
-           // thread.username = heroes.get(i).getName();
+            // thread.username = heroes.get(i).getName();
 //            System.out.println(" thread username ");
 //            System.out.println(thread.username);
-            thread.start();
+
+               thread.start();
         }
 
     }
@@ -62,8 +69,12 @@ public class MapC {
     //--------------------------------------
 
 
-    public void GamePageController() throws InterruptedException {
-        initTimer();
+    public void GamePageController()  {
+       try {
+           initTimer();
+       }catch (InterruptedException e){
+           e.printStackTrace();
+       }
 
     }
 
@@ -103,8 +114,33 @@ public class MapC {
         }
     }
 
+    static int random = 0;
 
+    public static void choosePerson(int indexOfAttack, boolean win) {
+        boolean check = true;
+        Player player = null;
+        ArrayList usernames = PlayersConnection.getInstance().attack(indexOfAttack);
+        System.out.println("attack arretlist : " + usernames.size());
+        Random rand = new Random();
+        int result = rand.nextInt(((usernames.size() - 1)) + 1);
+        while (check) {
+            if (result < usernames.size() && result >= 0) {
+                check = false;
+            } else {
+                result = rand.nextInt(((usernames.size() - 1)) + 1);
+            }
+        }
+      int success=  PlayersConnection.getInstance().getSucsses((String) usernames.get(result));
+        int fail=PlayersConnection.getInstance().getFailure((String) usernames.get(result));
+
+        if (win) {
+            PlayersConnection.getInstance().updateSuccess((String) usernames.get(result),success+1 );
+        } else {
+            PlayersConnection.getInstance().updateFailure((String) usernames.get(result), fail +1);
+        }
+    }
 }
+
 
 
 

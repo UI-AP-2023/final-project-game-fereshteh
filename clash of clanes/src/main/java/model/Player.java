@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Map;
-
 public class Player {
     private String id;
     private   String password;
@@ -64,7 +62,7 @@ public class Player {
     }
     //------------------------------------
 
-    public Player(String id, String password, int level, int success, int failure, int map) {
+    public Player(String id, String password, int level, int success, int failure) {
         this.id = id;
         this.password = password;
         this.level = level;

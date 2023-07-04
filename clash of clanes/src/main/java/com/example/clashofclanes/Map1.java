@@ -31,8 +31,4 @@ public class Map1 extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
-
-
-
 }

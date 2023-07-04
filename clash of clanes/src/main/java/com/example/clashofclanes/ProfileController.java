@@ -1,5 +1,6 @@
 package com.example.clashofclanes;
 
+import controller.MapC;
 import detaBase.PlayersConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -300,7 +301,7 @@ public class ProfileController implements Initializable {
     @FXML
     private AnchorPane map_pane2;
     @FXML
-    private static Label result_lbl;
+    public static Label result_lbl;
     private  static String win;
 
     public static String getWin() {
@@ -469,7 +470,35 @@ public class ProfileController implements Initializable {
     //--------------------------------
     private static String username;
     private static String password;
-    //------------------------------
+    private static int failure;
+    private static int success;
+
+    //-----------------------------
+
+    public AnchorPane getProfile_pane() {
+        return profile_pane;
+    }
+
+    public void setProfile_pane(AnchorPane profile_pane) {
+        this.profile_pane = profile_pane;
+    }
+
+    public static int getFailure() {
+        return failure;
+    }
+
+    public static void setFailure(int failure) {
+        ProfileController.failure = failure;
+    }
+
+    public static int getSuccess() {
+        return success;
+    }
+
+    public static void setSuccess(int success) {
+        ProfileController.success = success;
+    }
+    // -
 
 
     public static String getUsername() {
@@ -531,6 +560,7 @@ public class ProfileController implements Initializable {
         }
     }
 
+
     //------------------------------------------
     @FXML
     public void lastPane(MouseEvent event) {
@@ -557,11 +587,11 @@ public class ProfileController implements Initializable {
         }
     }
     public static void addFailure(){
-        PlayersConnection.getInstance().updateFailure(RegisterController.getUsername(),RegisterController.getFailure()+1);
+        PlayersConnection.getInstance().updateFailure(username,failure+1);
     }
     public static void addSuccess(){
-        RegisterController.setSucsses(RegisterController.getSucsses()+1);
-        PlayersConnection.getInstance().updateSuccess(LoginController.getUsername(),RegisterController.getSucsses());
+        RegisterController.setSucsses(success+1);
+        PlayersConnection.getInstance().updateSuccess(username,success+1);
     }
 
 
@@ -588,12 +618,12 @@ public class ProfileController implements Initializable {
     @FXML
     public void showFailure(MouseEvent event){
         addFailure();
-        failure2_lbl.setText(String.valueOf(PlayersConnection.getInstance().getFailure(username)));
+        failure2_lbl.setText(String.valueOf(failure+1));
     }
     @FXML
     public void showSucsses(MouseEvent event){
         addSuccess();
-        win2_lbl.setText(String.valueOf(PlayersConnection.getInstance().getSucsses(username)));
+        win2_lbl.setText(String.valueOf(success+1));
     }
     //-------------------------------------------
     @FXML
@@ -606,6 +636,7 @@ public class ProfileController implements Initializable {
     int min = 1;
     int result;
     private static int indexOfAttack;
+
     private ArrayList<Hero> heroes = new ArrayList<>();
 
 
@@ -629,6 +660,7 @@ public class ProfileController implements Initializable {
     }
 
     //------------------------------------
+
 
     @FXML
     public void showMaps(MouseEvent event) throws Exception {
@@ -712,6 +744,7 @@ public class ProfileController implements Initializable {
                 map4_pane.setVisible(true);
             }
         }
+
 
     }
 

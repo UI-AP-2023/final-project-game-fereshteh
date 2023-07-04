@@ -468,7 +468,7 @@
          </children>
       </AnchorPane>
       <Button fx:id="attack_btn" layoutX="634.0" layoutY="143.0" mnemonicParsing="false" onMouseClicked="#showMaps" prefHeight="45.0" prefWidth="106.0" style="-fx-background-color: #2f2e2d; -fx-background-radius: 30;" text="ATTACK" textFill="#32f00c" />
-      <Label fx:id="result_lbl" alignment="CENTER" layoutX="116.0" layoutY="155.0" prefHeight="21.0" prefWidth="302.0" text="WIN" visible="false" AnchorPane.bottomAnchor="431.0" AnchorPane.leftAnchor="116.0">
+      <Label fx:id="result_lbl" alignment="CENTER" layoutX="116.0" layoutY="155.0" prefHeight="21.0" prefWidth="302.0" AnchorPane.bottomAnchor="431.0" AnchorPane.leftAnchor="116.0">
          <font>
             <Font size="24.0" />
          </font>

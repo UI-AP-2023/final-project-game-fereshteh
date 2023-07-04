@@ -1,6 +1,7 @@
 package com.example.clashofclanes;
 
 import controller.LoginC;
+import detaBase.PlayersConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -71,7 +72,10 @@ public class LoginController implements Initializable {
     @FXML
     public void login(MouseEvent event) throws Exception {
        if( LoginC.getInstance().check(userName_txtField.getText(),password_txtField.getText())){
-
+           ProfileController.setFailure(PlayersConnection.getInstance().getFailure(username));
+           ProfileController.setSuccess(PlayersConnection.getInstance().getSucsses(username));
+           ProfileController.setPassword(password);
+           ProfileController.setUsername(username);
            new Profile().start((Stage) login_btn.getScene().getWindow());
        }
        else {

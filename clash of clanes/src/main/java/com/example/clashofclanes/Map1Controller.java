@@ -88,6 +88,9 @@ public class Map1Controller implements Initializable {
 
     @FXML
     private ImageView Wizard_img;
+    @FXML
+    private Label result_lbl;
+
 
     @FXML
     private ImageView archerQueen_img;
@@ -390,7 +393,7 @@ public class Map1Controller implements Initializable {
         imageView.setFitHeight(50);
         imageView.setLayoutX(x);
         imageView.setLayoutY(y);
-      //  Map1.root.getChildren().add(imageView);
+       // Map1.root.getChildren().add(imageView);
         imageView.setVisible(false);
          shotImages.add(imageView);
          return imageView;
@@ -407,8 +410,9 @@ public class Map1Controller implements Initializable {
             Wizard wizard2 = new Wizard(wizard.getPower(), wizard.getSpeed(), wizard.getHealth(), Wizard_img, wizard.getRadiosOfAttack());
             wizard2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\wizard.png", wizardImagviewObject, Wizard_img.getLayoutX(), Wizard_img.getLayoutY()));
 
-       //   wizard2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\tir3.png",shotObject,shot_img.getLayoutX(),shot_img.getLayoutY()));
-           // Map1.root.getChildren().add(wizard2);
+          wizard2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\tir3.png",shotObject,shot_img.getLayoutX(),shot_img.getLayoutY()));
+
+            Map1.root.getChildren().add(wizard2);
 
 
             draggedHero.add(wizard2);
@@ -473,7 +477,7 @@ public class Map1Controller implements Initializable {
         if (counterBarbarian < numberOfBarbarian) {
             Barbarian_King barbarianKing2 = new Barbarian_King(barbarianKing.getPower(), barbarianKing.getSpeed(), barbarianKing.getHealth(), barbarianKing_img, barbarianKing.getRadiosOfAttack());
             barbarianKing2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\1687789713960.png", barbarianObject, barbarianKing_img.getLayoutX(), barbarianKing_img.getLayoutY()));
-         //   barbarianKing2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\16880344472962nuj.png",shotBarbarianObject,tirBarbarian_img.getLayoutX(),tirBarbarian_img.getLayoutY()));
+           barbarianKing2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\16880344472962nuj.png",shotBarbarianObject,tirBarbarian_img.getLayoutX(),tirBarbarian_img.getLayoutY()));
 
           //  Map1.root.getChildren().add(barbarianKing2);
             Map1.root.getChildren().add(shotBarbarianObject);
@@ -501,7 +505,7 @@ public class Map1Controller implements Initializable {
         if (counterGrand < numberOfGrand) {
             Grand_Warden grandWarden2 = new Grand_Warden(grandWarden.getPower(), grandWarden.getSpeed(), grandWarden.getHealth(), GrandWarden_img, grandWarden.getRadiosOfAttack());
             grandWarden2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\ikinh.png", grandObject, GrandWarden_img.getLayoutX(), GrandWarden_img.getLayoutY()));
-           // grandWarden2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\1688034447296gcvg.png",shotGrandObject,tirGarden_img.getLayoutX(),tirGarden_img.getLayoutY()));
+           grandWarden2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\1688034447296gcvg.png",shotGrandObject,tirGarden_img.getLayoutX(),tirGarden_img.getLayoutY()));
 
           //  Map1.root.getChildren().add(grandWarden2);
             draggedHero.add(grandWarden2);
@@ -533,13 +537,10 @@ public class Map1Controller implements Initializable {
         else {
             ProfileController.setWin("you faild");
         }
-            new Profile().start((Stage) backgorond.getScene().getWindow());
+        MapC.choosePerson(ProfileController.getIndexOfAttack(),win);
+        new Profile().start((Stage) backgorond.getScene().getWindow());
 
     }
-
-
-
-
 }
 
 

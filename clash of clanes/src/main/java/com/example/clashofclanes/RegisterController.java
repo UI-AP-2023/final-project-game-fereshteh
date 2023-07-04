@@ -1,5 +1,7 @@
 package com.example.clashofclanes;
 
+import controller.MapC;
+import detaBase.PlayersConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -9,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.Player;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -100,10 +103,21 @@ public class RegisterController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
     @FXML
-    public void register(MouseEvent event) throws Exception {
+    public void register(MouseEvent event)  {
         username=userName_txtField.getText();
         password=password_txtField.getText();
-        new AllMap().start((Stage) register_btn.getScene().getWindow());
+        ProfileController.setFailure(PlayersConnection.getInstance().getFailure(username));
+        ProfileController.setSuccess(PlayersConnection.getInstance().getSucsses(username));
+        ProfileController.setPassword(password);
+        ProfileController.setUsername(username);
+        Player player=new Player(username,password,1,0,0);
+        MapC.addPlayer(player);
+
+       try {
+           new AllMap().start((Stage) register_btn.getScene().getWindow());
+       }catch (Exception e){
+           e.printStackTrace();
+       }
     }
     @FXML
     public void check(MouseEvent event)throws Exception{

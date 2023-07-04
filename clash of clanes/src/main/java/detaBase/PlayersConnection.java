@@ -1,5 +1,6 @@
 package detaBase;
 
+import com.example.clashofclanes.ProfileController;
 import javafx.scene.input.MouseEvent;
 
 import java.sql.*;
@@ -67,6 +68,7 @@ public class PlayersConnection {
         }
     }
     //-------------------------------------------------------
+
     public int getFailure(String username) {
 
         try {
@@ -155,11 +157,12 @@ public class PlayersConnection {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db", "server", "1234");
 
-            String SQLCom = String.format("UPDATE players SET (failure='%d')WHERE (username ='%s')", failure,username);
+            String SQLCom = String.format("UPDATE players SET failure=%d WHERE username ='%s'", failure,username);
             Statement s = connection.prepareStatement(SQLCom);
             s.execute(SQLCom);
 
             connection.close();
+            ProfileController.result_lbl.setText("you fail");
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
@@ -170,16 +173,19 @@ public class PlayersConnection {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/game-db", "server", "1234");
 
-            String SQLCom = String.format("UPDATE players SET success=%d WHERE username =%s", success,username);
+            String SQLCom = String.format("UPDATE players SET success=%d WHERE username ='%s'", success,username);
             Statement s = connection.prepareStatement(SQLCom);
            s.execute(SQLCom);
            // ArrayList<String> users = new ArrayList<>();
 
             connection.close();
+            ProfileController.setTextWin(" you win");
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
+
 
 }
     //------------------------------
