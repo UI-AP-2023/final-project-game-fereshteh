@@ -5,6 +5,7 @@ import com.example.clashofclanes.Map1Controller;
 import com.example.clashofclanes.ProfileController;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
+import model.hero.Archer_Queen;
 import model.hero.Hero;
 import model.strucrure.*;
 
@@ -112,6 +113,7 @@ public class ThreadController extends Thread {
         int sumY = (int) (resultY / hero.getSpeed());
         boolean target = true;
         while (!boundTarget()) {
+            tt.setDelay(Duration.millis(1000));
           //  Thread.sleep(1000);
             if (resultX > 0) {
                 if (Math.abs(sumX) < Math.abs(resultX)) {
@@ -206,7 +208,7 @@ public class ThreadController extends Thread {
         while (contourne) {
             if (hero.getHealth() > 0 || attckbuilding.getHealth() > 0) {
                 shot(hero);
-                hero.getShotHer0Img().setVisible(true);
+               // hero.getShotHer0Img().setVisible(true);
                 System.out.println("username :   " + hero.getName() + "health  :   " + hero.getHealth() + " before Attack");
                 hero.setHealth(hero.getHealth() - attckbuilding.getAttack_power());
                 System.out.println("building name  " + attckbuilding.getName() + "health  :  " + attckbuilding.getHealth() + "  before attack ");
@@ -216,6 +218,7 @@ public class ThreadController extends Thread {
                 System.out.println("username :   " + hero.getName() + "health  :   " + hero.getHealth() + " After Attack");
                 System.out.println("building name  " + attckbuilding.getName() + "health  :  " + attckbuilding.getHealth() + "  after attack ");
                 //  hero.getShotHer0Img().setVisible(true);
+                tt.setDelay(Duration.millis(1000));
             }
             if (hero.getHealth() <= 0) {
                 hero.getImageView().setVisible(false);
@@ -224,6 +227,12 @@ public class ThreadController extends Thread {
             }
             if (attckbuilding.getHealth() <= 0) {
                 attckbuilding.getImageView().setVisible(false);
+                if (attckbuilding instanceof ArcherBuilding ){
+                    ((ArcherBuilding) attckbuilding).getShot().setVisible(false);
+                }
+                else if(attckbuilding instanceof CanoonBuilding){
+                    ((CanoonBuilding) attckbuilding).getShot().setVisible(false);
+                }
 
 
             }
@@ -263,10 +272,12 @@ public class ThreadController extends Thread {
     //---------------------------
 //    @FXML
     void shot(Hero hero) {
-        TranslateTransition tt = new TranslateTransition(Duration.millis(2000));
+        tt.setDelay(Duration.millis(3000));
+        TranslateTransition tt = new TranslateTransition();
        // tt.setDuration(Duration.millis(2000));
         tt.setDelay(Duration.millis(500));
-        hero.getShotHer0Img().setVisible(true);
+        if(hero instanceof Archer_Queen){
+        hero.getShotHer0Img().setVisible(true);}
         tt.setNode(hero.getShotHer0Img());
         tt.setToX(attckbuilding.getImageView().getBoundsInParent().getCenterX());
         tt.setToY(attckbuilding.getImageView().getBoundsInParent().getCenterY());

@@ -136,14 +136,14 @@ public class Map1Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Map map = new Map(buildings, 20, backgorond);
-//        wizard=new Wizard(5,10,25,Wizard_img,20);
-//        grandWarden=new Grand_Warden(5,5,30,GrandWarden_img,5);
-//        barbarianKing=new Barbarian_King(5,3,20,barbarianKing_img,5);
-//        archerQueen=new Archer_Queen(5,7,15,archerQueen_img,5);
-//        heroes.add(wizard);
-//        heroes.add(grandWarden);
-//        heroes.add(barbarianKing);
-//        heroes.add(archerQueen);
+        wizard=new Wizard(10,10,500,Wizard_img,20);
+        grandWarden=new Grand_Warden(20,5,500,GrandWarden_img,5);
+        barbarianKing=new Barbarian_King(25,3,500,barbarianKing_img,5);
+        archerQueen=new Archer_Queen(30,7,500,archerQueen_img,5);
+        heroes.add(wizard);
+        heroes.add(grandWarden);
+        heroes.add(barbarianKing);
+        heroes.add(archerQueen);
 
         Map1.root.getChildren().add(map);
 
@@ -204,16 +204,20 @@ public class Map1Controller implements Initializable {
 
     //add building
     public void setBuildings() {
-        BlackWall firstBlackWall = new BlackWall("normal", 10, 5, blackWall2_img, blackWall2_img.getLayoutX(), blackWall2_img.getLayoutY());
+        BlackWall firstBlackWall = new BlackWall("normal", 130, 10, blackWall2_img, blackWall2_img.getLayoutX(), blackWall2_img.getLayoutY());
         firstBlackWall.setName("black wall2");
-        BlackWall secondBlackWall = new BlackWall("normal", 15, 5, blackWall_img, blackWall_img.getLayoutX(), blackWall_img.getLayoutY());
+        BlackWall secondBlackWall = new BlackWall("normal", 160, 10, blackWall_img, blackWall_img.getLayoutX(), blackWall_img.getLayoutY());
         secondBlackWall.setName("black wall1");
-        BlueWall firstBlueWall = new BlueWall("normal", 10, 5, blueBuliding_image, blueBuliding_image.getLayoutX(), blueBuliding_image.getLayoutY());
+        BlueWall firstBlueWall = new BlueWall("normal", 200, 10, blueBuliding_image, blueBuliding_image.getLayoutX(), blueBuliding_image.getLayoutY());
         firstBlueWall.setName("blueWall");
-        ArcherBuilding archerBuilding = new ArcherBuilding("Defensive", 5, 5, archerBuilding_img, archerBuilding_img.getLayoutX(), archerBuilding_img.getLayoutY());
+        ArcherBuilding archerBuilding = new ArcherBuilding("Defensive", 150, 15, archerBuilding_img, archerBuilding_img.getLayoutX(), archerBuilding_img.getLayoutY());
         archerBuilding.setName("archerBuilding");
-        CanoonBuilding canoonBuilding = new CanoonBuilding("Defensive", 10, 5, canoonBuliding_img, canoonBuliding_img.getLayoutX(), canoonBuliding_img.getLayoutY());
+        CanoonBuilding canoonBuilding = new CanoonBuilding("Defensive", 120, 12, canoonBuliding_img, canoonBuliding_img.getLayoutX(), canoonBuliding_img.getLayoutY());
         canoonBuilding.setName("canoon bulding");
+
+        canoonBuilding.setShot(tirCanoon_img);
+        archerBuilding.setShot(tirArcher_img);
+
         buildings.add(firstBlackWall);
         buildings.add(secondBlackWall);
         buildings.add(firstBlueWall);
@@ -403,8 +407,8 @@ public class Map1Controller implements Initializable {
             Wizard wizard2 = new Wizard(wizard.getPower(), wizard.getSpeed(), wizard.getHealth(), Wizard_img, wizard.getRadiosOfAttack());
             wizard2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\wizard.png", wizardImagviewObject, Wizard_img.getLayoutX(), Wizard_img.getLayoutY()));
 
-          wizard2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\tir3.png",shotObject,shot_img.getLayoutX(),shot_img.getLayoutY()));
-            Map1.root.getChildren().add(wizard2);
+       //   wizard2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\tir3.png",shotObject,shot_img.getLayoutX(),shot_img.getLayoutY()));
+           // Map1.root.getChildren().add(wizard2);
 
 
             draggedHero.add(wizard2);
@@ -433,20 +437,20 @@ public class Map1Controller implements Initializable {
             archer_queen.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\1687789713888.png", archerImageViewObject, archerQueen_img.getLayoutX(), archerQueen_img.getLayoutY()));
             archer_queen.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\tirArcher.png",shotArcherObject,tirArcher_img.getLayoutX(),tirArcher_img.getLayoutY()));
 
-            Map1.root.getChildren().add(archer_queen);
+          //  Map1.root.getChildren().add(archer_queen);
             Map1.root.getChildren().add(shotArcherObject);
 
             draggedHero.add(archer_queen);
 
-            RotateTransition rotate=new RotateTransition();
-            rotate.setAxis(Rotate.Z_AXIS);
-            rotate.setByAngle(180);
-            rotate.setCycleCount(20);
-            rotate.setDuration(Duration.millis(1000));
-            rotate.setAutoReverse(true);
-            rotate.setNode(archer_queen.getShotHer0Img());
-            archer_queen.getShotHer0Img().setVisible(false);
-            rotate.play();
+//            RotateTransition rotate=new RotateTransition();
+//            rotate.setAxis(Rotate.Z_AXIS);
+//            rotate.setByAngle(180);
+//            rotate.setCycleCount(20);
+//            rotate.setDuration(Duration.millis(1000));
+//            rotate.setAutoReverse(true);
+//            rotate.setNode(archer_queen.getShotHer0Img());
+//            archer_queen.getShotHer0Img().setVisible(false);
+//            rotate.play();
 
             archerImageViewObject = new ImageView();
             shotArcherObject=new ImageView();
@@ -469,9 +473,9 @@ public class Map1Controller implements Initializable {
         if (counterBarbarian < numberOfBarbarian) {
             Barbarian_King barbarianKing2 = new Barbarian_King(barbarianKing.getPower(), barbarianKing.getSpeed(), barbarianKing.getHealth(), barbarianKing_img, barbarianKing.getRadiosOfAttack());
             barbarianKing2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\1687789713960.png", barbarianObject, barbarianKing_img.getLayoutX(), barbarianKing_img.getLayoutY()));
-            barbarianKing2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\16880344472962nuj.png",shotBarbarianObject,tirBarbarian_img.getLayoutX(),tirBarbarian_img.getLayoutY()));
+         //   barbarianKing2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\16880344472962nuj.png",shotBarbarianObject,tirBarbarian_img.getLayoutX(),tirBarbarian_img.getLayoutY()));
 
-            Map1.root.getChildren().add(barbarianKing2);
+          //  Map1.root.getChildren().add(barbarianKing2);
             Map1.root.getChildren().add(shotBarbarianObject);
             draggedHero.add(barbarianKing2);
 
@@ -497,9 +501,9 @@ public class Map1Controller implements Initializable {
         if (counterGrand < numberOfGrand) {
             Grand_Warden grandWarden2 = new Grand_Warden(grandWarden.getPower(), grandWarden.getSpeed(), grandWarden.getHealth(), GrandWarden_img, grandWarden.getRadiosOfAttack());
             grandWarden2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\ikinh.png", grandObject, GrandWarden_img.getLayoutX(), GrandWarden_img.getLayoutY()));
-            grandWarden2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\1688034447296gcvg.png",shotGrandObject,tirGarden_img.getLayoutX(),tirGarden_img.getLayoutY()));
+           // grandWarden2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\1688034447296gcvg.png",shotGrandObject,tirGarden_img.getLayoutX(),tirGarden_img.getLayoutY()));
 
-            Map1.root.getChildren().add(grandWarden2);
+          //  Map1.root.getChildren().add(grandWarden2);
             draggedHero.add(grandWarden2);
             Map1.root.getChildren().add(shotGrandObject);
 
