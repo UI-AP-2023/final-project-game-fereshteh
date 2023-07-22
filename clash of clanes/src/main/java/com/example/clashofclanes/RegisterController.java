@@ -1,7 +1,9 @@
 package com.example.clashofclanes;
 
+import controller.LoginC;
 import controller.MapC;
 import detaBase.PlayersConnection;
+import exception.InvalidUsername;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,6 +16,7 @@ import javafx.stage.Stage;
 import model.Player;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable {
@@ -113,15 +116,15 @@ public class RegisterController implements Initializable {
         Player player=new Player(username,password,1,0,0);
         MapC.addPlayer(player);
 
+
        try {
            new AllMap().start((Stage) register_btn.getScene().getWindow());
+         //  LoginC.checkUsername(username);
        }catch (Exception e){
            e.printStackTrace();
        }
     }
-    @FXML
-    public void check(MouseEvent event)throws Exception{
 
-    }
+
 
 }

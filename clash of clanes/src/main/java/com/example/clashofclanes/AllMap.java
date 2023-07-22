@@ -10,7 +10,7 @@ public class AllMap extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("allMap.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 985, 657);
-        stage.setTitle("Hello!");
+        stage.setTitle("clash of clans !");
         stage.setScene(scene);
         stage.show();
     }

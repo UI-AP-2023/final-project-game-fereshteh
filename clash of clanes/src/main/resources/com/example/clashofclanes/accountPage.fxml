@@ -473,5 +473,6 @@
             <Font size="24.0" />
          </font>
       </Label>
+      <Label fx:id="show_lbl" alignment="CENTER" layoutX="166.0" layoutY="190.0" prefHeight="21.0" prefWidth="251.0" text="you win" visible="false" />
    </children>
 </AnchorPane>

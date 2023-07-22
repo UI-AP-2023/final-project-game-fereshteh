@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.swing.border.TitledBorder;
 import java.io.IOException;
 
 public class Register extends Application {
@@ -17,8 +18,83 @@ public class Register extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("register.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 823, 459);
-        stage.setTitle("Hello!");
+        stage.setTitle("clash of clans !");
+
+        stage.setAlwaysOnTop(false);
         stage.setScene(scene);
         stage.show();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

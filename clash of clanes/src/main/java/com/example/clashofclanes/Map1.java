@@ -27,7 +27,7 @@ public class Map1 extends Application {
     public void start(Stage stage) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("map1.fxml")));
         Scene scene = new Scene(root);
-        stage.setTitle("Hello!");
+        stage.setTitle("clash of clans ");
         stage.setScene(scene);
         stage.show();
     }

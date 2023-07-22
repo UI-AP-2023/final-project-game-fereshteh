@@ -7,10 +7,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="621.0" prefWidth="931.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clashofclanes.AcoountPageAttackController">
+<AnchorPane prefHeight="746.0" prefWidth="1111.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clashofclanes.AcoountPageAttackController">
    <children>
-      <ImageView fx:id="backGround_img" fitHeight="619.0" fitWidth="929.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="backGround_img" fitHeight="746.0" fitWidth="1131.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@27772531_7363694.jpg" />
          </image>
@@ -210,7 +211,7 @@
       </AnchorPane>
       <Label fx:id="next_lbl" layoutX="405.0" layoutY="219.0" onMouseClicked="#nextPane" prefHeight="60.0" prefWidth="35.0" text="&gt;&gt;" visible="false" />
       <Label fx:id="last_lbl" layoutY="229.0" onMouseClicked="#lastPane" prefHeight="60.0" prefWidth="35.0" text="&lt;&lt;" visible="false" />
-      <AnchorPane fx:id="Attack_pane" layoutX="9.0" layoutY="156.0" prefHeight="300.0" prefWidth="570.0">
+      <AnchorPane fx:id="Attack_pane" layoutX="9.0" layoutY="156.0" prefHeight="300.0" prefWidth="570.0" visible="false">
          <children>
             <Rectangle fx:id="showHeros_rec" arcHeight="5.0" arcWidth="5.0" fill="#2e2d2cbc" height="159.0" layoutX="24.0" layoutY="141.0" stroke="#2f2e2d" strokeType="INSIDE" width="526.0" />
             <Rectangle fx:id="numberOfHeros_rec" arcHeight="5.0" arcWidth="5.0" fill="#2e2d2cbc" height="59.0" layoutX="171.0" layoutY="47.0" stroke="#2f2e2d" strokeType="INSIDE" width="228.0" />
@@ -246,5 +247,15 @@
             <Label fx:id="lastHeroAttack_lbl" layoutX="-5.0" layoutY="184.0" onMouseClicked="#lastPane" prefHeight="60.0" prefWidth="35.0" text="&lt;&lt;" />
          </children>
       </AnchorPane>
+      <Label alignment="CENTER" layoutX="55.0" layoutY="156.0" prefHeight="21.0" prefWidth="321.0" text="congratulations" textFill="#0a0a0a">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="55.0" layoutY="201.0" prefHeight="21.0" prefWidth="338.0" text="Advance to the second stage">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

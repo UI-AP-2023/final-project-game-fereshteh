@@ -1,7 +1,6 @@
 package com.example.clashofclanes;
 
 import controller.MapC;
-import controller.ThreadController;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,7 +37,7 @@ public class Map1Controller implements Initializable {
     @FXML
     private ImageView tirBarbarian_img;
     @FXML
-    private ImageView tirBlueWall_img;
+   private ImageView tirBlueWall_img;
 
     @FXML
     private ImageView tirCanoon_img;
@@ -83,6 +82,9 @@ public class Map1Controller implements Initializable {
     @FXML
     private ImageView GrandWarden_img;
 
+
+    @FXML
+    private ImageView tirArcher2_img;
     @FXML
     private ImageView barbarianKing_img;
 
@@ -126,7 +128,7 @@ public class Map1Controller implements Initializable {
     public static void removeBuilding(Building building){
         buildings.remove(building);
     }
-    public static void removeHero(Hero hero){
+    public static void removeHero(Image hero){
         heroes.remove(hero);
     }
 
@@ -139,10 +141,10 @@ public class Map1Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Map map = new Map(buildings, 20, backgorond);
-        wizard=new Wizard(10,10,500,Wizard_img,20);
-        grandWarden=new Grand_Warden(20,5,500,GrandWarden_img,5);
-        barbarianKing=new Barbarian_King(25,3,500,barbarianKing_img,5);
-        archerQueen=new Archer_Queen(30,7,500,archerQueen_img,5);
+        wizard=new Wizard(10,10,190,Wizard_img,20);
+        grandWarden=new Grand_Warden(20,5,200,GrandWarden_img,5);
+        barbarianKing=new Barbarian_King(25,3,200,barbarianKing_img,5);
+        archerQueen=new Archer_Queen(5,7,80,archerQueen_img,5);
         heroes.add(wizard);
         heroes.add(grandWarden);
         heroes.add(barbarianKing);
@@ -176,7 +178,7 @@ public class Map1Controller implements Initializable {
         //---------------------------------
         meno_pane.setLayoutX(-450);
         TranslateTransition tt = new TranslateTransition(Duration.millis(2000));
-        tt.setDelay(Duration.seconds(2));
+        tt.setDelay(Duration.seconds(13));
         //tt.setDuration(Duration.seconds(3));
         tt.setNode(meno_pane);
         tt.setToX(450);
@@ -184,25 +186,41 @@ public class Map1Controller implements Initializable {
         tt.play();
         numberOfHeros();
         //-----------------------------
-        TranslateTransition buildingShot = new TranslateTransition(Duration.millis(500));
+        TranslateTransition buildingShot = new TranslateTransition(Duration.millis(1200));
         buildingShot.setNode(tirCanoon_img);
-        buildingShot.setByX(100);
-        buildingShot.setByY(100);
+        buildingShot.setByX(40);
+        buildingShot.setByY(40);
         buildingShot.setAutoReverse(true);
         buildingShot.setCycleCount(50);
         buildingShot.play();
         //-------------------------------
-        TranslateTransition archerBuildingShot = new TranslateTransition(Duration.millis(500));
+        TranslateTransition archerBuildingShot = new TranslateTransition(Duration.millis(1200));
         archerBuildingShot.setNode(tirBlueWall_img);
-        archerBuildingShot.setByX(100);
-        archerBuildingShot.setByY(100);
+        archerBuildingShot.setByX(50);
+        archerBuildingShot.setByY(50);
         archerBuildingShot.setAutoReverse(true);
         archerBuildingShot.setCycleCount(50);
         archerBuildingShot.play();
+        //--------------------------------------------------
+        TranslateTransition archerBuildingShot2 = new TranslateTransition(Duration.millis(1200));
+        archerBuildingShot2.setNode(tirArcher2_img);
+        archerBuildingShot2.setToX(50);
+        archerBuildingShot2.setToY(50);
+        archerBuildingShot2.setAutoReverse(true);
+        archerBuildingShot2.setCycleCount(50);
+        archerBuildingShot2.play();
+        //--------------------------------------------------
+        backgorond.setOnMouseClicked(event -> {
+            try {
+                new WinPage().start((Stage) backgorond.getScene().getWindow());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        });
 
     }
 
-    //--------------------------------------------------
 
 
     //add building
@@ -211,15 +229,16 @@ public class Map1Controller implements Initializable {
         firstBlackWall.setName("black wall2");
         BlackWall secondBlackWall = new BlackWall("normal", 160, 10, blackWall_img, blackWall_img.getLayoutX(), blackWall_img.getLayoutY());
         secondBlackWall.setName("black wall1");
-        BlueWall firstBlueWall = new BlueWall("normal", 200, 10, blueBuliding_image, blueBuliding_image.getLayoutX(), blueBuliding_image.getLayoutY());
+        BlueWall firstBlueWall = new BlueWall("normal", 150, 10, blueBuliding_image, blueBuliding_image.getLayoutX(), blueBuliding_image.getLayoutY());
         firstBlueWall.setName("blueWall");
-        ArcherBuilding archerBuilding = new ArcherBuilding("Defensive", 150, 15, archerBuilding_img, archerBuilding_img.getLayoutX(), archerBuilding_img.getLayoutY());
+        ArcherBuilding archerBuilding = new ArcherBuilding("Defensive", 180, 25, archerBuilding_img, archerBuilding_img.getLayoutX(), archerBuilding_img.getLayoutY());
         archerBuilding.setName("archerBuilding");
         CanoonBuilding canoonBuilding = new CanoonBuilding("Defensive", 120, 12, canoonBuliding_img, canoonBuliding_img.getLayoutX(), canoonBuliding_img.getLayoutY());
         canoonBuilding.setName("canoon bulding");
 
         canoonBuilding.setShot(tirCanoon_img);
-        archerBuilding.setShot(tirArcher_img);
+        archerBuilding.setShot(tirArcher2_img);
+        archerBuilding.setShot2(tirBlueWall_img);
 
         buildings.add(firstBlackWall);
         buildings.add(secondBlackWall);
@@ -252,12 +271,13 @@ public class Map1Controller implements Initializable {
         rotate.setDuration(Duration.millis(1000));
         rotate.setAutoReverse(true);
         rotate.setNode(firstBlackWall.getImageView());
+        rotate.setCycleCount(100);
         rotate.play();
 
         RotateTransition secondTT=new RotateTransition();
         secondTT.setAxis(Rotate.Z_AXIS);
         secondTT.setByAngle(180);
-        secondTT.setCycleCount(20);
+        secondTT.setCycleCount(100);
         secondTT.setDuration(Duration.millis(1000));
         secondTT.setAutoReverse(true);
         secondTT.setNode(secondBlackWall.getImageView());
@@ -408,7 +428,7 @@ public class Map1Controller implements Initializable {
         if (counterWizard < numberOfWizard) {
             System.out.println("yes");
             Wizard wizard2 = new Wizard(wizard.getPower(), wizard.getSpeed(), wizard.getHealth(), Wizard_img, wizard.getRadiosOfAttack());
-            wizard2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\wizard.png", wizardImagviewObject, Wizard_img.getLayoutX(), Wizard_img.getLayoutY()));
+            wizard2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\16888407921022.png", wizardImagviewObject, 306,601));
 
           wizard2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\tir3.png",shotObject,shot_img.getLayoutX(),shot_img.getLayoutY()));
 
@@ -438,7 +458,7 @@ public class Map1Controller implements Initializable {
 
         if (counterArcher < numberOfArcher) {
             Archer_Queen archer_queen = new Archer_Queen(archerQueen.getPower(), archerQueen.getSpeed(), archerQueen.getHealth(), archerQueen_img, archerQueen.getRadiosOfAttack());
-            archer_queen.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\1687789713888.png", archerImageViewObject, archerQueen_img.getLayoutX(), archerQueen_img.getLayoutY()));
+            archer_queen.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\1687789713888.png", archerImageViewObject, 196, 601));
             archer_queen.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\tirArcher.png",shotArcherObject,tirArcher_img.getLayoutX(),tirArcher_img.getLayoutY()));
 
           //  Map1.root.getChildren().add(archer_queen);
@@ -476,7 +496,7 @@ public class Map1Controller implements Initializable {
 
         if (counterBarbarian < numberOfBarbarian) {
             Barbarian_King barbarianKing2 = new Barbarian_King(barbarianKing.getPower(), barbarianKing.getSpeed(), barbarianKing.getHealth(), barbarianKing_img, barbarianKing.getRadiosOfAttack());
-            barbarianKing2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\1687789713960.png", barbarianObject, barbarianKing_img.getLayoutX(), barbarianKing_img.getLayoutY()));
+            barbarianKing2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\1687789713960.png", barbarianObject, 103, 601));
            barbarianKing2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\16880344472962nuj.png",shotBarbarianObject,tirBarbarian_img.getLayoutX(),tirBarbarian_img.getLayoutY()));
 
           //  Map1.root.getChildren().add(barbarianKing2);
@@ -504,7 +524,7 @@ public class Map1Controller implements Initializable {
     void click_Grand(MouseEvent event) {
         if (counterGrand < numberOfGrand) {
             Grand_Warden grandWarden2 = new Grand_Warden(grandWarden.getPower(), grandWarden.getSpeed(), grandWarden.getHealth(), GrandWarden_img, grandWarden.getRadiosOfAttack());
-            grandWarden2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\ikinh.png", grandObject, GrandWarden_img.getLayoutX(), GrandWarden_img.getLayoutY()));
+            grandWarden2.setImageView(makeCopy("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\ikinh.png", grandObject, 33, 601));
            grandWarden2.setShotHer0Img(makeShotImage("C:\\Users\\NA\\git Hub Game\\final-project-game-fereshteh\\clash of clanes\\src\\main\\resources\\com\\example\\clashofclanes\\1688034447296gcvg.png",shotGrandObject,tirGarden_img.getLayoutX(),tirGarden_img.getLayoutY()));
 
           //  Map1.root.getChildren().add(grandWarden2);

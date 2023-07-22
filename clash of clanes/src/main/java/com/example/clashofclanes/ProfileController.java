@@ -486,6 +486,8 @@ public class ProfileController implements Initializable {
     public static int getFailure() {
         return failure;
     }
+    @FXML
+    public static Label show_lbl;
 
     public static void setFailure(int failure) {
         ProfileController.failure = failure;
@@ -520,6 +522,9 @@ public class ProfileController implements Initializable {
     //---------------------------------
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(show){
+            show_lbl.setVisible(true);
+        }
 
     }
 
@@ -617,13 +622,13 @@ public class ProfileController implements Initializable {
     }
     @FXML
     public void showFailure(MouseEvent event){
-        addFailure();
-        failure2_lbl.setText(String.valueOf(failure+1));
+
+        failure2_lbl.setText(String.valueOf(failure));
     }
     @FXML
     public void showSucsses(MouseEvent event){
-        addSuccess();
-        win2_lbl.setText(String.valueOf(success+1));
+
+        win2_lbl.setText(String.valueOf(success));
     }
     //-------------------------------------------
     @FXML
@@ -636,6 +641,7 @@ public class ProfileController implements Initializable {
     int min = 1;
     int result;
     private static int indexOfAttack;
+ public static    boolean show=false;
 
     private ArrayList<Hero> heroes = new ArrayList<>();
 

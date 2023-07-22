@@ -2,6 +2,7 @@ package com.example.clashofclanes;
 
 import controller.LoginC;
 import detaBase.PlayersConnection;
+import exception.InvalidPassword;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -70,15 +71,25 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
     @FXML
-    public void login(MouseEvent event) throws Exception {
+    public void login(MouseEvent event)  {
        if( LoginC.getInstance().check(userName_txtField.getText(),password_txtField.getText())){
            ProfileController.setFailure(PlayersConnection.getInstance().getFailure(username));
            ProfileController.setSuccess(PlayersConnection.getInstance().getSucsses(username));
            ProfileController.setPassword(password);
            ProfileController.setUsername(username);
-           new Profile().start((Stage) login_btn.getScene().getWindow());
+          try {
+              new Profile().start((Stage) login_btn.getScene().getWindow());
+          }catch (Exception e){
+              e.printStackTrace();
+          }
        }
        else {
+          //String pass= PlayersConnection.getInstance().getPassword(username);
+        try {
+            LoginC.checkPassword(password,username);
+        }catch (InvalidPassword p){
+            p.printStackTrace();
+        }
            Alert alert = new Alert(Alert.AlertType.ERROR);
            alert.setContentText("wrong info");
            alert.show();

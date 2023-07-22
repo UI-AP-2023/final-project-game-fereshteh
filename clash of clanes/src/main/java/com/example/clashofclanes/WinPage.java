@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class AccountPageAtack extends Application {
+public class WinPage extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -17,7 +17,7 @@ public class AccountPageAtack extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("WinPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 931, 621);
-        stage.setTitle("Hello!");
+        stage.setTitle("clash of clans !");
         stage.setScene(scene);
         stage.show();
     }

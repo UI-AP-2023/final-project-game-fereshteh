@@ -2,6 +2,8 @@ package controller;
 
 import com.example.clashofclanes.ProfileController;
 import detaBase.PlayersConnection;
+import exception.InvalidPassword;
+import exception.InvalidUsername;
 
 import java.util.ArrayList;
 
@@ -34,7 +36,23 @@ public class LoginC {
         }
    return false; }
     //------------------------------------------
-    public void insert(String username,String password,int index,int level){
+    public static void insert(String username,String password,int index,int level){
     PlayersConnection.getInstance().savePlayer(username,password,index,level);
     }
+    public static void checkPassword(String password,String username) throws InvalidPassword {
+        String pass=PlayersConnection.getInstance().getPassword(username);
+        if(pass!=password){
+            throw new InvalidPassword("uncorrect password");
+        }
+    }
+    //--------------------------
+    public  static void checkUsername(String username)throws InvalidUsername{
+        ArrayList<String>usernames=PlayersConnection.getInstance().showUserName();
+        for(int i=0;i<usernames.size();i++){
+            if(usernames.get(i).equals(username)){
+                throw new InvalidUsername("it is  available");
+            }
+        }
+    }
+    //---------------------------------
 }

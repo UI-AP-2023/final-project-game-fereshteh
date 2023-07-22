@@ -24,12 +24,12 @@
             <Image url="@giga_tesla_4.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="canoonBuliding_img" fitHeight="73.0" fitWidth="105.0" layoutX="803.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="canoonBuliding_img" fitHeight="73.0" fitWidth="105.0" layoutX="803.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true" rotate="177.3">
          <image>
             <Image url="@canoon1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="archerBuilding_img" fitHeight="116.0" fitWidth="73.0" layoutX="577.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="archerBuilding_img" fitHeight="116.0" fitWidth="73.0" layoutX="585.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@archerTower.png" />
          </image>
@@ -94,12 +94,12 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ImageView fx:id="tirBlueWall_img" fitHeight="51.0" fitWidth="42.0" layoutX="579.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tirBlueWall_img" fitHeight="12.0" fitWidth="50.0" layoutX="579.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true" rotate="10.3">
          <image>
             <Image url="@tirArcher.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="tirCanoon_img" fitHeight="29.0" fitWidth="42.0" layoutX="776.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tirCanoon_img" fitHeight="29.0" fitWidth="42.0" layoutX="774.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@1688034447296ii.png" />
          </image>
@@ -107,5 +107,10 @@
       <Label fx:id="lableWin2" layoutX="186.0" layoutY="46.0" text="Label" visible="false" />
       <Label fx:id="lablWin3" text="Label" visible="false" />
       <Label fx:id="lableWin4" text="Label" visible="false" />
+      <ImageView fx:id="tirArcher2_img" fitHeight="12.0" fitWidth="50.0" layoutX="552.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+         <image>
+            <Image url="@tirArcher.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MapC {
-    private ArrayList<Building> buildings;
-    private ArrayList<Hero> heroes;
+    private static ArrayList<Building> buildings;
+    private static ArrayList<Hero> heroes;
     private static ArrayList<Player> players = new ArrayList<>();
 
     public ArrayList<Building> getBuildings() {
@@ -70,19 +70,23 @@ public class MapC {
 
 
     public void GamePageController()  {
-       try {
-           initTimer();
-       }catch (InterruptedException e){
-           e.printStackTrace();
-       }
+        ThreadController.setHeroes(heroes);
+        initTimer();
 
     }
 
     //-------------------
+public static void addThread(Hero hero){
+        ThreadController thread=new ThreadController();
+    thread.setBuildings(buildings);
+    thread.setHero(hero);
+    thread.attckbuilding = attckbuilding;
+    thread.run();
 
+}
 
     //--------------------------
-    public Building attckbuilding;
+    public static Building attckbuilding;
 
     public static void attackConnection(int index, boolean win) {
         Random rand = new Random();

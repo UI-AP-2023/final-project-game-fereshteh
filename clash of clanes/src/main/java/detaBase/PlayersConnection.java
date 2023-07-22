@@ -162,7 +162,7 @@ public class PlayersConnection {
             s.execute(SQLCom);
 
             connection.close();
-            ProfileController.result_lbl.setText("you fail");
+            ///ProfileController.result_lbl.setText("you fail");
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
@@ -179,7 +179,7 @@ public class PlayersConnection {
            // ArrayList<String> users = new ArrayList<>();
 
             connection.close();
-            ProfileController.setTextWin(" you win");
+           // ProfileController.setTextWin(" you win");
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }

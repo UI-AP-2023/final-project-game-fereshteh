@@ -17,7 +17,7 @@ public class AllMapAttack extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("allMap.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 985, 657);
-        stage.setTitle("Hello!");
+        stage.setTitle("clash of clans !");
         stage.setScene(scene);
         stage.show();
     }

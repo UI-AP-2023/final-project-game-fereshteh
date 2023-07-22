@@ -17,7 +17,7 @@ public class Profile extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("accountPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 931, 621);
-        stage.setTitle("Hello!");
+        stage.setTitle("clash of clans !");
         stage.setScene(scene);
         stage.show();
     }
